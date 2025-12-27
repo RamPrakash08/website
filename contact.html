@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Ram Prakash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+        }
+
+        .contact-intro {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .contact-card p {
+            color: #555;
+        }
+
+        .contact-card a {
+            color: #3498db;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .response-time {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            margin-top: 3rem;
+        }
+
+        .response-time h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: auto;
+        }
+
+        footer p {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">RP</a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Get In Touch</h1>
+        <p class="subtitle">I'd love to hear from you!</p>
+
+        <div class="contact-intro">
+            <p>
+                I'm always interested in discussing mathematics, collaborating on projects, or connecting with fellow math enthusiasts. Whether you have a question, want to work together, or just want to say hello, feel free to reach out!
+            </p>
+        </div>
+
+        <h2>Contact Methods</h2>
+        <div class="contact-methods">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p>
+                    <a href="mailto:ram.prakash@example.com">ram.prakash@example.com</a>
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🔗</div>
+                <h3>LinkedIn</h3>
+                <p>
+                    <a href="#" target="_blank">linkedin.com/in/ramprakash</a>
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">🎓</div>
+                <h3>Academic Profile</h3>
+                <p>
+                    <a href="#" target="_blank">ResearchGate Profile</a>
+                </p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Discord</h3>
+                <p>
+                    Math Community Server
+                </p>
+            </div>
+        </div>
+
+        <div class="response-time">
+            <h3>Response Time</h3>
+            <p>
+                I typically respond to emails within 24-48 hours. For urgent matters, please indicate so in your subject line. I'm available for virtual meetings and collaborations – just reach out to schedule a time!
+            </p>
+        </div>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <h3>Let's Explore Mathematics Together</h3>
+            <p style="margin-top: 1rem; color: #7f8c8d;">
+                "Alone we can do so little; together we can do so much." – Helen Keller
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ram Prakash. Exploring the infinite world of mathematics.</p>
+    </footer>
+</body>
+</html>

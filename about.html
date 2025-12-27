@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Ram Prakash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #2c3e50;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .about-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 2rem;
+        }
+
+        .philosophy {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            margin: 2rem 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #7f8c8d;
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: auto;
+        }
+
+        footer p {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">RP</a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>About Me</h1>
+
+        <div class="about-section">
+            <p>
+                Hello! I'm Ram Prakash, a passionate mathematician dedicated to exploring the beauty and elegance of mathematics. I believe that mathematics is not just about numbers and equations, but a language that describes the fundamental patterns of our universe.
+            </p>
+            <p>
+                My journey in mathematics has led me to appreciate the power of abstract thinking and logical reasoning. I enjoy unraveling complex problems and finding elegant solutions.
+            </p>
+        </div>
+
+        <h2>My Journey</h2>
+        <p>
+            Mathematics has been my passion since I first encountered the elegance of geometric proofs and the fascination of number theory. What started as curiosity has evolved into a lifelong dedication to understanding the mathematical foundations of our world.
+        </p>
+        <p>
+            Over the years, I've delved into various branches of mathematics, from pure mathematics to applied fields. Each area has offered unique insights and challenges that have shaped my perspective on problem-solving.
+        </p>
+
+        <div class="philosophy">
+            <h2>My Philosophy</h2>
+            <p>
+                I believe that mathematics is accessible to everyone. It's not about being a "genius" – it's about curiosity, persistence, and the willingness to see problems from different angles. Every mathematical challenge is an opportunity to grow and learn.
+            </p>
+        </div>
+
+        <div class="quote">
+            "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." – William Paul Thurston
+        </div>
+
+        <h2>What I Do</h2>
+        <p>
+            When I'm not exploring mathematical concepts, I enjoy sharing knowledge with others, collaborating on research projects, and finding new ways to make mathematics engaging and accessible to learners at all levels.
+        </p>
+        <p>
+            I'm always eager to connect with fellow mathematicians, students, and anyone who shares a love for mathematical exploration.
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ram Prakash. Exploring the infinite world of mathematics.</p>
+    </footer>
+</body>
+</html>
