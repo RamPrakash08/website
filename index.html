@@ -61,79 +61,129 @@
 
         main {
             flex: 1;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 4rem 2rem;
         }
 
-        .hero {
-            text-align: center;
-            padding: 3rem 0;
-        }
-
         h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             color: #2c3e50;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            margin-bottom: 2rem;
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: #2c3e50;
         }
 
-        .math-symbol {
-            font-size: 4rem;
-            color: #3498db;
+        .about-container {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: flex-start;
+        }
+
+        .profile-section {
+            flex: 0 0 350px;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 4px solid white;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content p {
+            margin-bottom: 1.2rem;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .philosophy {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
             margin: 2rem 0;
         }
 
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #2980b9;
-        }
-
-        .quick-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .link-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
+        .quote {
+            font-style: italic;
+            color: #7f8c8d;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 2rem 0;
+            font-size: 1.1rem;
         }
 
-        .link-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .blogs-section {
+            margin-top: 4rem;
         }
 
-        .link-card h3 {
+        .blogs-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-title {
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-weight: bold;
             color: #2c3e50;
+            margin-bottom: 0.5rem;
         }
 
-        .link-card a {
-            color: #3498db;
-            text-decoration: none;
+        .blog-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: block;
         }
 
         footer {
@@ -148,6 +198,22 @@
             color: #bdc3c7;
         }
 
+        @media (max-width: 900px) {
+            .about-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .profile-section {
+                flex: 1;
+                width: 100%;
+            }
+
+            .profile-image {
+                max-width: 100%;
+            }
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem;
@@ -157,8 +223,8 @@
                 gap: 1rem;
             }
 
-            .hero {
-                padding: 2rem 0;
+            .blog-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -169,7 +235,7 @@
             <div class="logo"><a href="index.html">RP</a></div>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
                 <li><a href="interests.html">Interests</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -177,32 +243,81 @@
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Ram Prakash</h1>
-            <p class="subtitle">Mathematician</p>
-            <div class="math-symbol">∫ ∂ ∇ ∞</div>
-            <a href="about.html" class="cta-button">Get to Know Me</a>
-        </section>
+        <h1>Welcome</h1>
 
-        <section>
-            <div class="quick-links">
-                <div class="link-card">
-                    <h3>About Me</h3>
-                    <p>Learn more about my journey in mathematics</p>
-                    <a href="about.html">Read More →</a>
+        <div class="about-container">
+            <div class="profile-section">
+                <img src="profile_pic.jpeg" alt="Ram Prakash" class="profile-image">
+            </div>
+
+            <div class="about-content">
+                <p>
+                    Hello! I'm Ram Prakash, a passionate mathematician dedicated to exploring the beauty and elegance of mathematics. I believe that mathematics is not just about numbers and equations, but a language that describes the fundamental patterns of our universe.
+                </p>
+                <p>
+                    My journey in mathematics has led me to appreciate the power of abstract thinking and logical reasoning. I enjoy unraveling complex problems and finding elegant solutions.
+                </p>
+
+                <h2>My Journey</h2>
+                <p>
+                    Mathematics has been my passion since I first encountered the elegance of geometric proofs and the fascination of number theory. What started as curiosity has evolved into a lifelong dedication to understanding the mathematical foundations of our world.
+                </p>
+                <p>
+                    Over the years, I've delved into various branches of mathematics, from pure mathematics to applied fields. Each area has offered unique insights and challenges that have shaped my perspective on problem-solving.
+                </p>
+
+                <div class="philosophy">
+                    <h3>My Philosophy</h3>
+                    <p>
+                        I believe that mathematics is accessible to everyone. It's not about being a "genius" – it's about curiosity, persistence, and the willingness to see problems from different angles. Every mathematical challenge is an opportunity to grow and learn.
+                    </p>
                 </div>
-                <div class="link-card">
-                    <h3>Interests</h3>
-                    <p>Explore my areas of mathematical expertise</p>
-                    <a href="interests.html">Discover →</a>
-                </div>
-                <div class="link-card">
-                    <h3>Contact</h3>
-                    <p>Get in touch for collaborations</p>
-                    <a href="contact.html">Connect →</a>
+
+                <h2>What I Do</h2>
+                <p>
+                    When I'm not exploring mathematical concepts, I enjoy sharing knowledge with others, collaborating on research projects, and finding new ways to make mathematics engaging and accessible to learners at all levels.
+                </p>
+                <p>
+                    I'm always eager to connect with fellow mathematicians, students, and anyone who shares a love for mathematical exploration.
+                </p>
+
+                <div class="quote">
+                    "Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding." – William Paul Thurston
                 </div>
             </div>
-        </section>
+        </div>
+
+        <div class="blogs-section">
+            <h2>Featured Blog Posts</h2>
+            <div class="blog-grid">
+                <div class="blog-card" onclick="window.location.href='blogs.html'">
+                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&h=400&fit=crop" alt="Blog Image" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-title">The Beauty of Prime Numbers</div>
+                        <div class="blog-excerpt">Exploring the fascinating patterns and mysteries hidden within prime numbers...</div>
+                        <span class="blog-date">December 2025</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="window.location.href='blogs.html'">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop" alt="Blog Image" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-title">Understanding Calculus Intuitively</div>
+                        <div class="blog-excerpt">A visual journey through the fundamental concepts of calculus...</div>
+                        <span class="blog-date">November 2025</span>
+                    </div>
+                </div>
+
+                <div class="blog-card" onclick="window.location.href='blogs.html'">
+                    <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&h=400&fit=crop" alt="Blog Image" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-title">The Golden Ratio in Nature</div>
+                        <div class="blog-excerpt">Discovering the mathematical patterns that shape our natural world...</div>
+                        <span class="blog-date">October 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>

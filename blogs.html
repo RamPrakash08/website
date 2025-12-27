@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Ram Prakash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fafafa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .blog-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .blog-tag {
+            background: #3498db;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: normal;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: auto;
+        }
+
+        footer p {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">RP</a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blogs.html" class="active">Blogs</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Mathematics Blog</h1>
+        <p class="subtitle">Exploring mathematical concepts, one post at a time</p>
+
+        <div class="blog-grid">
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&h=400&fit=crop" alt="Prime Numbers" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-title">The Beauty of Prime Numbers</div>
+                    <div class="blog-excerpt">Exploring the fascinating patterns and mysteries hidden within prime numbers. From the Sieve of Eratosthenes to the Riemann Hypothesis, discover why primes captivate mathematicians.</div>
+                    <div class="blog-meta">
+                        <span class="blog-date">December 15, 2025</span>
+                        <span class="blog-tag">Number Theory</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop" alt="Calculus" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-title">Understanding Calculus Intuitively</div>
+                    <div class="blog-excerpt">A visual journey through the fundamental concepts of calculus. Learn how derivatives and rates of change help us understand motion, growth, and optimization in the real world.</div>
+                    <div class="blog-meta">
+                        <span class="blog-date">November 28, 2025</span>
+                        <span class="blog-tag">Calculus</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&h=400&fit=crop" alt="Golden Ratio" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-title">The Golden Ratio in Nature</div>
+                    <div class="blog-excerpt">Discovering the mathematical patterns that shape our natural world. From sunflowers to galaxies, explore how the golden ratio appears throughout nature and art.</div>
+                    <div class="blog-meta">
+                        <span class="blog-date">November 10, 2025</span>
+                        <span class="blog-tag">Geometry</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=600&h=400&fit=crop" alt="Fractals" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-title">Fractals: The Mathematics of Self-Similarity</div>
+                    <div class="blog-excerpt">Dive into the mesmerizing world of fractals, where simple rules create infinitely complex patterns. Understanding the Mandelbrot set and fractal dimensions.</div>
+                    <div class="blog-meta">
+                        <span class="blog-date">October 25, 2025</span>
+                        <span class="blog-tag">Fractals</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=600&h=400&fit=crop" alt="Linear Algebra" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-title">Linear Algebra: The Language of Data</div>
+                    <div class="blog-excerpt">Exploring how vectors and matrices form the foundation of machine learning, computer graphics, and modern data science. Understanding transformations and eigenvalues.</div>
+                    <div class="blog-meta">
+                        <span class="blog-date">October 8, 2025</span>
+                        <span class="blog-tag">Algebra</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&h=400&fit=crop" alt="Topology" class="blog-image">
+                <div class="blog-content">
+                    <div class="blog-title">Topology: When Shape Doesn't Matter</div>
+                    <div class="blog-excerpt">An introduction to topology and the fascinating concept of homeomorphism. Why a coffee cup is topologically equivalent to a donut.</div>
+                    <div class="blog-meta">
+                        <span class="blog-date">September 20, 2025</span>
+                        <span class="blog-tag">Topology</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ram Prakash. Exploring the infinite world of mathematics.</p>
+    </footer>
+</body>
+</html>
