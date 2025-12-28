@@ -291,30 +291,52 @@
         <div class="blogs-section">
             <h2>Featured Blog Posts</h2>
             <div class="blog-grid">
-                <div class="blog-card" onclick="window.location.href='blog-prime-numbers.html'">
-                    <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?w=600&h=400&fit=crop" alt="Blog Image" class="blog-image">
+                <div class="blog-card" onclick="window.location.href='blog-complex-analysis.html'">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop" alt="Mathematical Visualization" class="blog-image">
                     <div class="blog-content">
-                        <div class="blog-title">The Beauty of Prime Numbers</div>
-                        <div class="blog-excerpt">Exploring the fascinating patterns and mysteries hidden within prime numbers...</div>
+                        <div class="blog-title">From Stokes' Theorem to Cauchy</div>
+                        <div class="blog-excerpt">Exploring why "curl-free implies conservative" fails in domains with holes, and the deep connection between vector calculus and complex analysis...</div>
                         <span class="blog-date">December 2025</span>
                     </div>
                 </div>
 
-                <div class="blog-card" onclick="window.location.href='blogs.html'">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&h=400&fit=crop" alt="Blog Image" class="blog-image">
-                    <div class="blog-content">
-                        <div class="blog-title">Understanding Calculus Intuitively</div>
-                        <div class="blog-excerpt">A visual journey through the fundamental concepts of calculus...</div>
-                        <span class="blog-date">November 2025</span>
+                <div class="blog-card" onclick="window.location.href='blog-level-sets.html'">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <!-- Constraint curve -->
+                            <path d="M 100 320 Q 200 180 300 200 Q 400 220 500 120" fill="none" stroke="#e74c3c" stroke-width="4" opacity="0.9"/>
+                            <!-- Particle positions with velocity vectors -->
+                            <g transform="translate(180, 245)">
+                                <circle r="10" fill="#f39c12" opacity="0.9"/>
+                                <line x1="0" y1="0" x2="50" y2="-25" stroke="#3498db" stroke-width="3" marker-end="url(#arrowhead3)"/>
+                            </g>
+                            <g transform="translate(300, 200)">
+                                <circle r="10" fill="#27ae60" opacity="0.9"/>
+                                <line x1="0" y1="0" x2="45" y2="10" stroke="#3498db" stroke-width="3" marker-end="url(#arrowhead3)"/>
+                            </g>
+                            <g transform="translate(420, 185)">
+                                <circle r="10" fill="#9b59b6" opacity="0.9"/>
+                                <line x1="0" y1="0" x2="35" y2="-20" stroke="#3498db" stroke-width="3" marker-end="url(#arrowhead3)"/>
+                            </g>
+                            <!-- Normal vector showing codimension -->
+                            <g transform="translate(300, 200)">
+                                <line x1="0" y1="0" x2="0" y2="-100" stroke="#f39c12" stroke-width="2.5" stroke-dasharray="5,3" opacity="0.7"/>
+                                <text x="8" y="-60" font-family="Georgia, serif" font-size="12" fill="#f39c12">n (normal)</text>
+                            </g>
+                            <!-- Labels -->
+                            <text x="300" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" opacity="0.9">Constraint: g(x,y) = 0</text>
+                            <text x="300" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#bdc3c7" opacity="0.8">Level sets & codimension in classical mechanics</text>
+                            <defs>
+                                <marker id="arrowhead3" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" opacity="0.9"/>
+                                </marker>
+                            </defs>
+                        </svg>
                     </div>
-                </div>
-
-                <div class="blog-card" onclick="window.location.href='blogs.html'">
-                    <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?w=600&h=400&fit=crop" alt="Blog Image" class="blog-image">
                     <div class="blog-content">
-                        <div class="blog-title">The Golden Ratio in Nature</div>
-                        <div class="blog-excerpt">Discovering the mathematical patterns that shape our natural world...</div>
-                        <span class="blog-date">October 2025</span>
+                        <div class="blog-title">Level Sets, Codimension, and Constraints in Classical Mechanics</div>
+                        <div class="blog-excerpt">Understanding how level sets and codimension help us describe constrained motion in classical mechanics, from pendulums to particle systems...</div>
+                        <span class="blog-date">December 2025</span>
                     </div>
                 </div>
             </div>

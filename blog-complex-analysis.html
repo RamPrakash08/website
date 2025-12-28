@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Analysis and Geometry | Ram Prakash</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fafafa;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 5% 1rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .blog-content {
+            font-size: 1.1rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin: 2rem 0 1rem;
+        }
+
+        .equation-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        .definition-box {
+            background: #fff9e6;
+            border: 2px solid #f39c12;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 350px;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-featured-image svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .definition-box h4 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .highlight-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        ul, ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1.5rem;
+            }
+
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Ram Prakash / राम प्रकाश</a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blogs.html" class="active">Blogs</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="blogs.html" class="back-link">← Back to Blogs</a>
+
+    <main>
+        <article>
+            <div class="blog-header">
+                <h1>Closed Is Not Exact: From Stokes' Theorem to Cauchy</h1>
+                <div class="blog-meta">
+                    By Ram Prakash | December 28, 2025 | Category: Complex Analysis
+                </div>
+            </div>
+
+            <div class="blog-content">
+                <p>
+                    The three volumes of <em>The Feynman Lectures on Physics</em> are very popular among physicists and are widely considered the bible of modern physics. In <em>The Feynman Lectures on Physics, Volume II: Mainly Electromagnetism and Matter</em>, in the second chapter, the author remarks:
+                </p>
+
+                <div class="highlight-box">
+                    <p style="font-style: italic;">
+                        "In a physical problem we frequently find that the curl of some quantity—say of the vector field \(\mathbf{A}\)—is zero. Now we have seen (Eq. (2.46)) that the curl of a gradient is zero, which is easy to remember because of the way the vectors work. It could certainly be, then, that \(\mathbf{A}\) is the gradient of some quantity, because then its curl would necessarily be zero. The interesting theorem is that if the curl of \(\mathbf{A}\) is zero, then \(\mathbf{A}\) is always the gradient of something—there is some scalar field \(\psi\) such that \(\mathbf{A} = \nabla \psi\). In other words, we have the theorem:
+                    </p>
+                    <div class="equation-box">
+                        $$\nabla \times \mathbf{A} = 0 \quad \Rightarrow \quad \mathbf{A} = \nabla \psi \tag{2.50}$$
+                    </div>
+                </div>
+
+                <p>
+                    If this statement were true in complete generality, then much of complex analysis and potential theory would collapse. In this blog, I will share some insights into the relation between complex analysis and differential topology, and explain why this mistake should not be ignored.
+                </p>
+
+                <p>
+                    At first glance, this might seem like a harmless technicality, but it's not. The statement \(\nabla \times \mathbf{A} = 0 \Rightarrow \mathbf{A} = \nabla \psi\) is <strong>false in general</strong>, and understanding why is crucial for anyone working with vector fields, whether in physics or mathematics. The error lies in overlooking the topology of the domain. In domains with holes (like the region around a solenoid, or the space \(\mathbb{R}^3 \setminus \{z\text{-axis}\}\) in electromagnetic problems), there exist vector fields with zero curl that are <strong>not</strong> gradients of any scalar function.
+                </p>
+
+                <!-- <p>
+                    The canonical counterexample comes from electromagnetism itself: the magnetic field \(\mathbf{B}\) produced by an infinite wire carries current. In the region outside the wire, \(\nabla \times \mathbf{B} = 0\), yet \(\mathbf{B}\) is <strong>not</strong> the gradient of any scalar potential—its circulation around the wire is non-zero! This is precisely the situation captured by the complex function \(f(z) = 1/z\), whose derivative exists everywhere except at the origin, but which admits no global primitive on any domain surrounding the origin.
+                </p> -->
+
+                <p>
+                    What makes this particularly serious is that such "topological obstructions" appear everywhere in physics: from the Aharonov-Bohm effect to magnetic monopoles, from fluid dynamics around vortices to electromagnetic theory in non-simply-connected regions. Ignoring the topology can lead to incorrect physical predictions and flawed mathematical reasoning. The "Feynman mistake" is therefore not just a mathematical footnote, rather it's a fundamental warning that domain geometry matters.
+                </p>
+
+                <div class="blog-featured-image">
+                    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background gradient -->
+                        <defs>
+                            <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+                            </linearGradient>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" opacity="0.8"/>
+                            </marker>
+                        </defs>
+
+                        <rect width="800" height="350" fill="url(#bgGradient)"/>
+
+                        <!-- Grid lines -->
+                        <g opacity="0.1">
+                            <line x1="100" y1="50" x2="100" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="200" y1="50" x2="200" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="300" y1="50" x2="300" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="400" y1="50" x2="400" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="500" y1="50" x2="500" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="600" y1="50" x2="600" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="700" y1="50" x2="700" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="50" y1="100" x2="750" y2="100" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="50" y1="175" x2="750" y2="175" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="50" y1="250" x2="750" y2="250" stroke="#ffffff" stroke-width="1"/>
+                        </g>
+
+                        <!-- Title -->
+                        <text x="400" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#ffffff" opacity="0.95">∇ × A = 0 does NOT imply A = ∇ψ</text>
+
+                        <!-- Vector field showing curl - left side (punctured domain) -->
+                        <g transform="translate(200, 175)">
+                            <!-- Punctured hole -->
+                            <circle cx="0" cy="0" r="30" fill="#1a1a2e" stroke="#e74c3c" stroke-width="3" opacity="0.9"/>
+                            <text x="0" y="6" text-anchor="middle" font-size="14" fill="#e74c3c" font-weight="bold">×</text>
+
+                            <!-- Rotating vectors around hole showing curl -->
+                            <g opacity="0.95">
+                                <!-- Vector at angle 0 -->
+                                <line x1="50" y1="0" x2="75" y2="0" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 45 -->
+                                <line x1="35" y1="-35" x2="52" y2="-52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 90 -->
+                                <line x1="0" y1="-50" x2="0" y2="-75" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 135 -->
+                                <line x1="-35" y1="-35" x2="-52" y2="-52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 180 -->
+                                <line x1="-50" y1="0" x2="-75" y2="0" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 225 -->
+                                <line x1="-35" y1="35" x2="-52" y2="52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 270 -->
+                                <line x1="0" y1="50" x2="0" y2="75" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <!-- Vector at angle 315 -->
+                                <line x1="35" y1="35" x2="52" y2="52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                            </g>
+
+                            <!-- Circular integration path -->
+                            <circle cx="0" cy="0" r="95" fill="none" stroke="#f39c12" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.8"/>
+                            <text x="0" y="110" text-anchor="middle" font-size="12" fill="#f39c12" font-weight="bold">∮ γ A·dl ≠ 0</text>
+
+                            <text x="0" y="130" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-weight="bold">Domain with Hole</text>
+                            <text x="0" y="148" text-anchor="middle" font-size="11" fill="#bdc3c7" opacity="0.8">(non-simply connected)</text>
+                        </g>
+
+                        <!-- Arrow separator -->
+                        <g transform="translate(400, 175)">
+                            <line x1="-40" y1="0" x2="40" y2="0" stroke="#ffffff" stroke-width="2.5" opacity="0.6"/>
+                            <polygon points="-45,-7 -52,0 -45,7" fill="#ffffff" opacity="0.6"/>
+                            <polygon points="45,-7 52,0 45,7" fill="#ffffff" opacity="0.6"/>
+                        </g>
+
+                        <!-- Simply connected domain - right side -->
+                        <g transform="translate(600, 175)">
+                            <!-- Gradient field showing conservative vector field -->
+                            <g opacity="0.95">
+                                <line x1="-60" y1="50" x2="-35" y2="35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <line x1="0" y1="60" x2="0" y2="35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <line x1="60" y1="50" x2="35" y2="35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+                                <line x1="-60" y1="0" x2="-35" y2="0" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <line x1="60" y1="0" x2="35" y2="0" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+                                <line x1="-60" y1="-50" x2="-35" y2="-35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <line x1="0" y1="-60" x2="0" y2="-35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                                <line x1="60" y1="-50" x2="35" y2="-35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+                            </g>
+
+                            <!-- Closed curve with zero integral -->
+                            <ellipse cx="0" cy="0" rx="85" ry="60" fill="none" stroke="#f39c12" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.8"/>
+                            <text x="0" y="80" text-anchor="middle" font-size="12" fill="#f39c12" font-weight="bold">∮ γ A·dl = 0</text>
+
+                            <text x="0" y="105" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-weight="bold">Simply Connected</text>
+                            <text x="0" y="123" text-anchor="middle" font-size="11" fill="#bdc3c7" opacity="0.8">(no holes)</text>
+                        </g>
+
+                        <!-- Bottom explanation -->
+                        <text x="400" y="315" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3498db" opacity="0.95">The key difference: Topology determines whether a curl-free field is conservative</text>
+                        <text x="400" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#bdc3c7" opacity="0.8">∇ × (∇ψ) = 0 always holds, but ∇ × A = 0 ⇒ A = ∇ψ requires simply connected domain</text>
+                    </svg>
+                </div>
+                <p class="image-caption">
+                    <strong>Figure 1:</strong> Visualization of the topological obstruction to the converse of curl-free implies conservative. Left: A curl-free field around a punctured domain that is not conservative. Right: A gradient field on a simply connected domain. (AI-generated illustration)
+                </p>
+
+                <h2>Setting the Stage</h2>
+                <p>
+                    Let \(\Omega \subset \mathbb{C}\) be an open set, and let \(f : \Omega \to \mathbb{C}\) be a holomorphic function. Before we discuss primitives, let's understand what holomorphic means: a function is holomorphic if it is complex differentiable at every point in its domain, meaning the limit
+                </p>
+
+                <p>
+                    $$f'(z_0) = \lim_{h \to 0} \frac{f(z_0 + h) - f(z_0)}{h}$$
+                </p>
+
+                <p>
+                    exists and is the same regardless of how \(h\) approaches 0 in the complex plane.
+                </p>
+
+                <h2>Local vs Global Primitives</h2>
+
+                <div class="definition-box">
+                    <h4>Definition: Local Primitive</h4>
+                    <p>
+                        We say that \(f\) <strong>admits a primitive at a point</strong> \(z_0 \in \Omega\) if there exists an open neighborhood \(U \subset \Omega\) with \(z_0 \in U\) and a holomorphic function \(F : U \to \mathbb{C}\) such that \(F'(z) = f(z)\) for all \(z \in U\).
+                    </p>
+                </div>
+
+                <div class="definition-box">
+                    <h4>Definition: Global Primitive</h4>
+                    <p>
+                        We say that \(f\) <strong>admits a (global) primitive on</strong> \(\Omega\) if there exists a holomorphic function \(F : \Omega \to \mathbb{C}\) satisfying \(F'(z) = f(z)\) for all \(z \in \Omega\). In this case, the function \(F\) is called a <strong>primitive</strong> (or <strong>antiderivative</strong>) of \(f\) on \(\Omega\).
+                    </p>
+                </div>
+
+                <h2>The Key Distinction</h2>
+                <p>
+                    The distinction between local and global primitives is crucial in complex analysis. Every holomorphic function admits a local primitive at every point of its domain – this follows from the existence of power series expansions. However, the existence of a global primitive is a much more subtle question that depends on the geometry of the domain \(\Omega\).
+                </p>
+
+                <h2>Primitives and Integrals: The Fundamental Connection</h2>
+
+                <h3>If \(f\) has a global primitive, then integrals vanish</h3>
+                <p>
+                    Suppose \(f\) admits a global primitive \(F\) on \(\Omega\). Then for any closed curve \(\gamma : [a,b] \to \Omega\) (where \(\gamma(a) = \gamma(b)\)), we have:
+                </p>
+
+                <p>
+                    $$\oint_\gamma f(z) \, dz = \int_a^b f(\gamma(t)) \gamma'(t) \, dt = \int_a^b F'(\gamma(t)) \gamma'(t) \, dt$$
+                </p>
+
+                <p>
+                    By the chain rule, this becomes:
+                </p>
+
+                <p>
+                    $$\oint_\gamma f(z) \, dz = \int_a^b \frac{d}{dt}[F(\gamma(t))] \, dt = F(\gamma(b)) - F(\gamma(a)) = 0$$
+                </p>
+
+                <p>
+                    since \(\gamma(a) = \gamma(b)\). This is a direct consequence of the Fundamental Theorem of Calculus applied to complex functions.
+                </p>
+
+                <h3>Path independence and the primitive</h3>
+                <p>
+                    Moreover, if \(F\) is a global primitive of \(f\), then the integral of \(f\) between any two points \(z_1, z_2 \in \Omega\) can be expressed as \(\int_\gamma f(z) \, dz = F(z_2) - F(z_1)\), where \(\gamma\) is <strong>any</strong> path in \(\Omega\) from \(z_1\) to \(z_2\). This shows that the integral is <strong>path-independent</strong> – it depends only on the endpoints, not on the specific curve chosen. This is a remarkable property that distinguishes functions with global primitives.
+                </p>
+
+                <h3>The converse: when vanishing integrals imply existence of primitives</h3>
+                <p>
+                    The converse is equally profound: if a holomorphic function \(f\) satisfies \(\oint_\gamma f(z) \, dz = 0\) for every closed curve \(\gamma\) in \(\Omega\), then \(f\) admits a global primitive on \(\Omega\). The construction of such a primitive proceeds as follows: fix a point \(z_0 \in \Omega\) and define for any \(z \in \Omega\):
+                </p>
+
+                <p>
+                    $$F(z) = \int_{\gamma_z} f(w) \, dw$$
+                </p>
+
+                <p>
+                    where \(\gamma_z\) is <strong>any</strong> curve in \(\Omega\) from \(z_0\) to \(z\). The condition that all closed integrals vanish guarantees that this definition is independent of the choice of curve \(\gamma_z\), making \(F\) well-defined. One can then verify that \(F'(z) = f(z)\) for all \(z \in \Omega\).
+                </p>
+
+                <h4>A Special Case: Star-Shaped Domains</h4>
+                <p>
+                    An important class of domains where every holomorphic function admits a primitive is the <strong>star-shaped domains</strong>. A domain \(\Omega \subset \mathbb{C}\) is called <strong>star-shaped</strong> (with respect to a point \(z_0 \in \Omega\)) if for every point \(z \in \Omega\), the entire line segment from \(z_0\) to \(z\) lies within \(\Omega\): \(\{z_0 + t(z - z_0) : t \in [0,1]\} \subset \Omega\) for all \(z \in \Omega\).
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>Theorem:</strong> If \(\Omega\) is a star-shaped domain and \(f : \Omega \to \mathbb{C}\) is holomorphic, then \(f\) admits a primitive on \(\Omega\).
+                    </p>
+                    <p>
+                        <strong>Proof:</strong> Fix the "star center" \(z_0 \in \Omega\). For any \(z \in \Omega\), define \(F(z) = \int_{[z_0,z]} f(w) \, dw\), where \([z_0,z]\) denotes the straight line segment from \(z_0\) to \(z\) (which lies in \(\Omega\) by star-shapedness). By differentiating under the integral sign or using a direct argument with the definition of the derivative, one can show \(F'(z) = f(z)\).
+                    </p>
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <div style="display: inline-block; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <svg width="400" height="300" viewBox="0 0 400 300">
+                            <!-- Star-shaped domain -->
+                            <path d="M 200 50 Q 300 80 320 150 Q 340 220 280 260 Q 220 280 200 270 Q 180 280 120 260 Q 60 220 80 150 Q 100 80 200 50"
+                                  fill="#e8f4f8" stroke="#3498db" stroke-width="2"/>
+
+                            <!-- Star center point -->
+                            <circle cx="200" cy="150" r="6" fill="#e74c3c"/>
+                            <text x="200" y="175" text-anchor="middle" font-size="14" fill="#2c3e50">z₀ (star center)</text>
+
+                            <!-- Point z -->
+                            <circle cx="280" cy="100" r="5" fill="#27ae60"/>
+                            <text x="295" y="105" text-anchor="middle" font-size="14" fill="#2c3e50">z</text>
+
+                            <!-- Line segment from z0 to z -->
+                            <line x1="200" y1="150" x2="280" y2="100" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,5"/>
+                            <text x="245" y="120" text-anchor="middle" font-size="12" fill="#27ae60" transform="rotate(-33, 245, 120)">[z₀,z]</text>
+
+                            <!-- Another point -->
+                            <circle cx="130" cy="220" r="5" fill="#9b59b6"/>
+                            <text x="115" y="235" text-anchor="middle" font-size="14" fill="#2c3e50">z'</text>
+
+                            <!-- Line segment from z0 to z' -->
+                            <line x1="200" y1="150" x2="130" y2="220" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5"/>
+
+                            <!-- Caption -->
+                            <text x="200" y="295" text-anchor="middle" font-size="12" fill="#7f8c8d">Star-shaped domain with center z₀</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <p>
+                    Star-shaped domains are more general than simply connected domains (convex domains are a special case of star-shaped domains, where any point can serve as the star center). This result guarantees that on such domains, the integral of any holomorphic function around any closed curve is zero.
+                </p>
+
+                <h2>When Do Global Primitives Exist?</h2>
+                <p>
+                    Combining these results, we have the fundamental characterization: a holomorphic function \(f\) admits a global primitive on \(\Omega\) <strong>if and only if</strong> the integral of \(f\) around every closed curve in \(\Omega\) is zero.
+                </p>
+
+                <p>
+                    This condition is intimately related to the topology of the domain \(\Omega\). Simply connected domains (domains without "holes") always satisfy this property for holomorphic functions, guaranteeing the existence of global primitives.
+                </p>
+
+                <div class="highlight-box">
+                    <strong>Example:</strong> The function \(f(z) = \frac{1}{z}\) is holomorphic on \(\mathbb{C} \setminus \{0\}\), but it does not admit a global primitive on this domain because the integral around the unit circle is \(2\pi i \neq 0\). However, on any simply connected subdomain (like a slit plane), a primitive exists: \(F(z) = \log(z)\).
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <div style="display: inline-block; background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        <svg width="500" height="280" viewBox="0 0 500 280">
+                            <!-- Non-star-shaped domain (punctured disk) -->
+                            <circle cx="120" cy="140" r="80" fill="#ffe8e8" stroke="#e74c3c" stroke-width="2"/>
+                            <circle cx="120" cy="140" r="8" fill="white" stroke="#e74c3c" stroke-width="2"/>
+
+                            <!-- Point that can't see center -->
+                            <circle cx="80" cy="100" r="4" fill="#9b59b6"/>
+                            <circle cx="160" cy="100" r="4" fill="#27ae60"/>
+
+                            <!-- Line that would pass through hole -->
+                            <line x1="80" y1="100" x2="160" y2="100" stroke="#e74c3c" stroke-width="2" stroke-dasharray="3,3"/>
+
+                            <text x="120" y="240" text-anchor="middle" font-size="13" fill="#2c3e50">NOT star-shaped (punctured disk)</text>
+                            <text x="120" y="255" text-anchor="middle" font-size="11" fill="#7f8c8d">Can't connect through the hole</text>
+
+                            <!-- Divider -->
+                            <line x1="250" y1="40" x2="250" y2="240" stroke="#bdc3c7" stroke-width="1" stroke-dasharray="5,5"/>
+
+                            <!-- Star-shaped domain (convex) -->
+                            <ellipse cx="370" cy="140" rx="90" ry="80" fill="#e8f8e8" stroke="#27ae60" stroke-width="2"/>
+
+                            <!-- Star center -->
+                            <circle cx="370" cy="140" r="5" fill="#e74c3c"/>
+
+                            <!-- Various points -->
+                            <circle cx="320" cy="90" r="4" fill="#3498db"/>
+                            <circle cx="420" cy="110" r="4" fill="#3498db"/>
+                            <circle cx="340" cy="190" r="4" fill="#3498db"/>
+                            <circle cx="400" cy="180" r="4" fill="#3498db"/>
+
+                            <!-- Lines from center to all points -->
+                            <line x1="370" y1="140" x2="320" y2="90" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+                            <line x1="370" y1="140" x2="420" y2="110" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+                            <line x1="370" y1="140" x2="340" y2="190" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+                            <line x1="370" y1="140" x2="400" y2="180" stroke="#27ae60" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6"/>
+
+                            <text x="370" y="240" text-anchor="middle" font-size="13" fill="#2c3e50">Star-shaped (convex domain)</text>
+                            <text x="370" y="255" text-anchor="middle" font-size="11" fill="#7f8c8d">All points connect to center</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2>Geometric Interpretation</h2>
+                <p>
+                    The existence of primitives connects complex analysis to the geometry of the underlying domain. Domains with holes (multiply connected domains) can prevent globally defined primitives from existing, even though local primitives always exist. This beautiful interplay between analysis and geometry is one of the reasons complex analysis is such a powerful and elegant subject.
+                </p>
+
+                <p style="font-size: 0.9rem; color: #7f8c8d; font-style: italic;">
+                    <strong>Note:</strong> All diagrams and illustrations in this blog post are AI-generated visualizations created to help explain mathematical concepts.
+                </p>
+
+                <h2>Conclusion</h2>
+                <p>
+                    The study of primitives in complex analysis reveals the deep connection between the analytic properties of functions and the topological properties of their domains. From local existence guaranteed by power series to global existence dictated by geometry, this topic exemplifies the unity of mathematics.
+                </p>
+
+                <div class="quote" style="text-align: center; font-style: italic; color: #7f8c8d; margin: 3rem 0; font-size: 1.1rem;">
+                    "The profound study of nature is the most fertile source of mathematical discoveries." – Joseph Fourier
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ram Prakash. Exploring the infinite world of mathematics and physics.</p>
+    </footer>
+</body>
+</html>

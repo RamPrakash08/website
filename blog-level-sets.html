@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level Sets, Codimension, and Constraints | Ram Prakash</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fafafa;
+        }
+
+        header {
+            padding: 2rem 5%;
+            border-bottom: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #2c3e50;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 2rem 5% 1rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .blog-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .blog-content {
+            font-size: 1.1rem;
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .blog-content h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.4rem;
+            color: #34495e;
+            margin: 2rem 0 1rem;
+        }
+
+        .blog-featured-image {
+            width: 100%;
+            height: 350px;
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-featured-image svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #2c3e50;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            color: #bdc3c7;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 1.5rem;
+            }
+
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Ram Prakash / राम प्रकाश</a></div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blogs.html" class="active">Blogs</a></li>
+                <li><a href="interests.html">Interests</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="blogs.html" class="back-link">← Back to Blogs</a>
+
+    <main>
+        <article>
+            <div class="blog-header">
+                <h1>Level Sets, Codimension, and Constraints in Classical Mechanics</h1>
+                <div class="blog-meta">
+                    By Ram Prakash | December 28, 2025 | Category: Classical Mechanics
+                </div>
+            </div>
+
+            <div class="blog-content">
+                <div class="blog-featured-image">
+                    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background gradient -->
+                        <defs>
+                            <linearGradient id="bgGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+                            </linearGradient>
+                            <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" opacity="0.9"/>
+                            </marker>
+                        </defs>
+
+                        <rect width="800" height="350" fill="url(#bgGradient2)"/>
+
+                        <!-- Grid -->
+                        <g opacity="0.1">
+                            <line x1="100" y1="50" x2="100" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="200" y1="50" x2="200" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="300" y1="50" x2="300" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="400" y1="50" x2="400" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="500" y1="50" x2="500" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="600" y1="50" x2="600" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="700" y1="50" x2="700" y2="300" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="50" y1="100" x2="750" y2="100" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="50" y1="175" x2="750" y2="175" stroke="#ffffff" stroke-width="1"/>
+                            <line x1="50" y1="250" x2="750" y2="250" stroke="#ffffff" stroke-width="1"/>
+                        </g>
+
+                        <!-- Title -->
+                        <text x="400" y="35" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="#ffffff" opacity="0.95">Constrained Motion on a Curve</text>
+
+                        <!-- Main constraint curve (like a pendulum or particle on a wire) -->
+                        <path d="M 150 280 Q 250 150 400 175 Q 550 200 650 100"
+                              fill="none" stroke="#e74c3c" stroke-width="4" opacity="0.9"/>
+
+                        <!-- Level set of the constraint function -->
+                        <text x="400" y="310" text-anchor="middle" font-size="12" fill="#e74c3c" opacity="0.8">Constraint: g(x,y) = 0 (1D curve in ℝ²)</text>
+
+                        <!-- Particle positions on the curve with velocity vectors -->
+                        <!-- Position 1 -->
+                        <g transform="translate(220, 215)">
+                            <circle r="8" fill="#f39c12" opacity="0.9"/>
+                            <!-- Velocity vector tangent to curve -->
+                            <line x1="0" y1="0" x2="50" y2="-20" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead2)"/>
+                            <text x="25" y="-30" text-anchor="middle" font-size="10" fill="#3498db" font-weight="bold">v₁</text>
+                        </g>
+
+                        <!-- Position 2 -->
+                        <g transform="translate(350, 182)">
+                            <circle r="8" fill="#27ae60" opacity="0.9"/>
+                            <!-- Velocity vector -->
+                            <line x1="0" y1="0" x2="45" y2="5" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead2)"/>
+                            <text x="30" y="-10" text-anchor="middle" font-size="10" fill="#3498db" font-weight="bold">v₂</text>
+                        </g>
+
+                        <!-- Position 3 -->
+                        <g transform="translate(480, 190)">
+                            <circle r="8" fill="#9b59b6" opacity="0.9"/>
+                            <!-- Velocity vector -->
+                            <line x1="0" y1="0" x2="40" y2="15" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead2)"/>
+                            <text x="30" y="30" text-anchor="middle" font-size="10" fill="#3498db" font-weight="bold">v₃</text>
+                        </g>
+
+                        <!-- Position 4 -->
+                        <g transform="translate(580, 142)">
+                            <circle r="8" fill="#e67e22" opacity="0.9"/>
+                            <!-- Velocity vector -->
+                            <line x1="0" y1="0" x2="35" y2="-25" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead2)"/>
+                            <text x="25" y="-35" text-anchor="middle" font-size="10" fill="#3498db" font-weight="bold">v₄</text>
+                        </g>
+
+                        <!-- Normal vector to constraint (showing codimension) -->
+                        <g transform="translate(350, 182)">
+                            <!-- Normal vector (perpendicular to curve) -->
+                            <line x1="0" y1="0" x2="0" y2="-80" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,3" opacity="0.7"/>
+                            <text x="5" y="-60" text-anchor="start" font-size="10" fill="#f39c12">n (normal)</text>
+                        </g>
+
+                        <!-- Dimension explanation -->
+                        <g transform="translate(100, 80)">
+                            <text x="0" y="0" font-family="Georgia, serif" font-size="11" fill="#ffffff" opacity="0.9">
+                                <tspan x="0" dy="0">• Configuration space: ℝ²</tspan>
+                                <tspan x="0" dy="18">• Constraint: g(x,y) = 0 (codimension 1)</tspan>
+                                <tspan x="0" dy="18">• Motion is confined to 1D curve</tspan>
+                                <tspan x="0" dy="18">• Velocity vectors are tangent</tspan>
+                            </text>
+                        </g>
+
+                        <!-- Lagrange multiplier visualization hint -->
+                        <text x="600" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#27ae60" opacity="0.9">∇L = 0 gives constraint forces</text>
+                        <text x="600" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#bdc3c7" opacity="0.8">Lagrange multipliers (λ)</text>
+
+                    </svg>
+                </div>
+                <p class="image-caption">
+                    <strong>Figure 1:</strong> Visualization of a particle constrained to move along a curve in ℝ². The colored circles show the particle at different times, with blue velocity vectors tangent to the constraint curve. The orange dashed line shows a normal vector, illustrating codimension 1. (AI-generated illustration)
+                </p>
+
+                <p>
+                    In classical mechanics, we often study systems that are not free to move in all directions. A pendulum is constrained to swing along a circular arc; a bead slides along a wire; a particle is confined to a surface. These <strong>constrained systems</strong> require special mathematical tools, and the language of level sets and codimension provides the perfect framework for understanding them.
+                </p>
+
+                <p>
+                    This blog explores how level sets describe constraints, what codimension tells us about the geometry of constrained motion, and how these ideas connect to Lagrange multipliers and the geometry of configuration spaces.
+                </p>
+
+                <h2>Level Sets: The Geometry of Constraints</h2>
+
+                <p>
+                    Given a smooth function \(g : \mathbb{R}^n \to \mathbb{R}\), the <strong>level set</strong> of \(g\) at value \(c\) is the set of all points where \(g\) takes that value:
+                </p>
+
+                <p>
+                    $$L_c = \{x \in \mathbb{R}^n : g(x) = c\}$$
+                </p>
+
+                <p>
+                    When we impose a constraint \(g(x) = 0\) on a system, we're restricting the configuration to lie on the level set \(L_0\). This is the geometric way of thinking about constraints: they're not equations to be solved, but <strong>surfaces</strong> (more generally, manifolds) on which the system must live.
+                </p>
+
+                <h2>Codimension: Measuring "How Constraining" a Constraint Is</h2>
+
+                <p>
+                    If we're in \(\mathbb{R}^n\) and impose a single constraint \(g_1(x) = 0\), we typically reduce the dimension by 1: the level set has dimension \(n-1\). We say the constraint has <strong>codimension 1</strong>.
+                </p>
+
+                <p>
+                    More generally, if we impose \(k\) independent constraints \(g_1(x) = 0, \ldots, g_k(x) = 0\), the intersection of their level sets has dimension \(n - k\) (generically). The collection of constraints has <strong>codimension \(k\)</strong>.
+                </p>
+
+                <p>
+                    <strong>Key insight:</strong> Codimension measures how much we're constraining the system. A single constraint in \(\mathbb{R}^3\) gives a 2D surface (codimension 1). In \(\mathbb{R}^2\), a single constraint typically gives a 1D curve (still codimension 1, but now the configuration space itself is 1D!).
+                </p>
+
+                <h2>Why Tangent Vectors Matter</h2>
+
+                <p>
+                    When a system is constrained to a level set, not every direction of motion is allowed. The <strong>tangent space</strong> at a point consists of all velocity vectors compatible with the constraints.
+                </p>
+
+                <p>
+                    Mathematically, if \(x(t)\) satisfies \(g(x(t)) = 0\), then differentiating gives:
+                </p>
+
+                <p>
+                    $$\frac{d}{dt}g(x(t)) = \nabla g(x(t)) \cdot x'(t) = 0$$
+                </p>
+
+                <p>
+                    This says that the velocity \(x'(t)\) must be orthogonal to the gradient \(\nabla g\). The gradient points normal to the constraint surface, so velocities must be <strong>tangent</strong> to it.
+                </p>
+
+                <h2>Lagrange Multipliers: The Elegant Formalism</h2>
+
+                <p>
+                    The method of Lagrange multipliers provides a powerful way to handle constrained optimization. To find constrained critical points of \(f(x)\) subject to \(g(x) = 0\), we introduce a multiplier \(\lambda\) and solve:
+                </p>
+
+                <p>
+                    $$\nabla f(x) = \lambda \nabla g(x), \quad g(x) = 0$$
+                </p>
+
+                <p>
+                    Geometrically, this says: at a constrained critical point, the gradient of \(f\) must be parallel to the gradient of \(g\). This makes sense—if \(\nabla f\) had any component tangent to the constraint surface, we could move along the surface to increase or decrease \(f\).
+                </p>
+
+                <h2>Classical Mechanics Examples</h2>
+
+                <h3>The Simple Pendulum</h3>
+                <p>
+                    A pendulum of length \(\ell\) in the plane has coordinates \((x,y)\), but the constraint \(x^2 + y^2 = \ell^2\) (a circle, codimension 1 in \(\mathbb{R}^2\)) reduces it to one degree of freedom. We parameterize by the angle \(\theta\):
+                </p>
+
+                <p>
+                    $$x = \ell \sin\theta, \quad y = -\ell \cos\theta$$
+                </p>
+
+                <p>
+                    The velocity vector is always tangent to the circle, and the configuration space is \(S^1\) (a 1-dimensional manifold).
+                </p>
+
+                <h3>Particle on a Surface</h3>
+                <p>
+                    A particle constrained to a surface \(g(x,y,z) = 0\) in \(\mathbb{R}^3\) moves on a 2D manifold (codimension 1 in \(\mathbb{R}^3\)). The allowed velocities are tangent to the surface, and forces normal to the surface are constraint forces (reaction forces).
+                </p>
+
+                <h2>Conclusion: Geometry as Physics</h2>
+
+                <p>
+                    Level sets and codimension give us a precise language for describing constrained motion. The gradient \(\nabla g\) points normal to the constraint surface, and the condition \(\nabla g \cdot v = 0\) for velocity vectors captures the idea that motion must be tangent.
+                </p>
+
+                <p>
+                    These geometric ideas unify seemingly different problems: a bead on a wire, a pendulum, and a particle on a surface are all instances of the same mathematical structure. The language of manifolds, tangent spaces, and codimension—once considered abstract—becomes essential for understanding classical mechanics.
+                </p>
+
+                <div style="text-align: center; font-style: italic; color: #7f8c8d; margin: 3rem 0; font-size: 1.1rem;">
+                    "Nature does not know that we are doing mathematics. But we are doing physics, and we discover that mathematics is its language." – often attributed to various physicists
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ram Prakash. Exploring the infinite world of mathematics and physics.</p>
+    </footer>
+</body>
+</html>
