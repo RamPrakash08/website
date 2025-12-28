@@ -339,6 +339,67 @@
                         <span class="blog-date">December 2025</span>
                     </div>
                 </div>
+
+                <div class="blog-card" onclick="window.location.href='blog-particle-manifold.html'">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #2c1810 0%, #4a2c2a 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <!-- Sphere -->
+                            <circle cx="300" cy="200" r="120" fill="none" stroke="#e8d5b7" stroke-width="2.5" opacity="0.6"/>
+
+                            <!-- Latitude lines -->
+                            <ellipse cx="300" cy="200" rx="120" ry="40" fill="none" stroke="#e8d5b7" stroke-width="1" opacity="0.3"/>
+                            <ellipse cx="300" cy="200" rx="120" ry="80" fill="none" stroke="#e8d5b7" stroke-width="1" opacity="0.3"/>
+                            <ellipse cx="300" cy="200" rx="85" ry="28" fill="none" stroke="#e8d5b7" stroke-width="1" opacity="0.25"/>
+
+                            <!-- Longitude lines -->
+                            <ellipse cx="300" cy="200" rx="35" ry="120" fill="none" stroke="#e8d5b7" stroke-width="1" opacity="0.25"/>
+                            <ellipse cx="300" cy="200" rx="70" ry="120" fill="none" stroke="#e8d5b7" stroke-width="1" opacity="0.25"/>
+
+                            <!-- Particle position 1 - on sphere surface -->
+                            <g transform="translate(300, 120)">
+                                <circle r="8" fill="#f39c12" opacity="0.95"/>
+                                <!-- Tangent velocity vector -->
+                                <line x1="0" y1="0" x2="50" y2="15" stroke="#3498db" stroke-width="3" marker-end="url(#arrowhead8)"/>
+                                <!-- Normal vector (pointing outward) -->
+                                <line x1="0" y1="0" x2="0" y2="-50" stroke="#e74c3c" stroke-width="2" stroke-dasharray="4,3" opacity="0.7"/>
+                                <text x="8" y="-35" font-size="10" fill="#e74c3c" font-weight="bold">n</text>
+                            </g>
+
+                            <!-- Particle position 2 -->
+                            <g transform="translate(380, 170)">
+                                <circle r="6" fill="#27ae60" opacity="0.9"/>
+                                <line x1="0" y1="0" x2="35" y2="-20" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead8)"/>
+                            </g>
+
+                            <!-- Particle position 3 -->
+                            <g transform="translate(350, 260)">
+                                <circle r="6" fill="#9b59b6" opacity="0.9"/>
+                                <line x1="0" y1="0" x2="-40" y2="10" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead8)"/>
+                            </g>
+
+                            <!-- Particle position 4 -->
+                            <g transform="translate(220, 230)">
+                                <circle r="6" fill="#e67e22" opacity="0.9"/>
+                                <line x1="0" y1="0" x2="-35" y2="-15" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead8)"/>
+                            </g>
+
+                            <!-- Labels -->
+                            <text x="300" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" opacity="0.9">Sphere S²</text>
+                            <text x="300" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#d4c4a8" opacity="0.8">Particle constrained to spherical manifold</text>
+
+                            <defs>
+                                <marker id="arrowhead8" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" opacity="0.9"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-title">Classical Mechanics of a Particle on a Manifold</div>
+                        <div class="blog-excerpt">Exploring how classical mechanics generalizes to curved manifolds, where geometry determines dynamics through geodesics and curvature...</div>
+                        <span class="blog-date">December 2025</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
