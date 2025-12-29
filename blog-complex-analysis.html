@@ -248,16 +248,13 @@
 
                 <div class="highlight-box">
                     <p style="font-style: italic;">
-                        "In a physical problem we frequently find that the curl of some quantity—say of the vector field \(\mathbf{A}\)—is zero. Now we have seen (Eq. (2.46)) that the curl of a gradient is zero, which is easy to remember because of the way the vectors work. It could certainly be, then, that \(\mathbf{A}\) is the gradient of some quantity, because then its curl would necessarily be zero. The interesting theorem is that if the curl of \(\mathbf{A}\) is zero, then \(\mathbf{A}\) is always the gradient of something—there is some scalar field \(\psi\) such that \(\mathbf{A} = \nabla \psi\). In other words, we have the theorem:
+                        "The interesting theorem is that if the curl of \(\mathbf{A}\) is zero, then \(\mathbf{A}\) is always the gradient of something—there is some scalar field \(\psi\) such that \(\mathbf{A} = \nabla \psi\). In other words, we have the theorem:
                     </p>
                     <div class="equation-box">
                         $$\nabla \times \mathbf{A} = 0 \quad \Rightarrow \quad \mathbf{A} = \nabla \psi \tag{2.50}$$
                     </div>
                 </div>
 
-                <p>
-                    If this statement were true in complete generality, then much of complex analysis and potential theory would collapse. In this blog, I will share some insights into the relation between complex analysis and differential topology, and explain why this mistake should not be ignored.
-                </p>
 
                 <p>
                     At first glance, this might seem like a harmless technicality, but it's not. The statement \(\nabla \times \mathbf{A} = 0 \Rightarrow \mathbf{A} = \nabla \psi\) is <strong>false in general</strong>, and understanding why is crucial for anyone working with vector fields, whether in physics or mathematics. The error lies in overlooking the topology of the domain. In domains with holes (like the region around a solenoid, or the space \(\mathbb{R}^3 \setminus \{z\text{-axis}\}\) in electromagnetic problems), there exist vector fields with zero curl that are <strong>not</strong> gradients of any scalar function.
@@ -269,6 +266,10 @@
 
                 <p>
                     What makes this particularly serious is that such "topological obstructions" appear everywhere in physics: from the Aharonov-Bohm effect to magnetic monopoles, from fluid dynamics around vortices to electromagnetic theory in non-simply-connected regions. Ignoring the topology can lead to incorrect physical predictions and flawed mathematical reasoning. The "Feynman mistake" is therefore not just a mathematical footnote, rather it's a fundamental warning that domain geometry matters.
+                </p>
+                
+                <p>
+                     In this blog, I aim to share some insights into the relation between complex analysis and differential topology, and explain why this mistake should not be ignored.
                 </p>
 
                 <div class="blog-featured-image">
@@ -561,12 +562,357 @@
 
                 <h2>Geometric Interpretation</h2>
                 <p>
-                    The existence of primitives connects complex analysis to the geometry of the underlying domain. Domains with holes (multiply connected domains) can prevent globally defined primitives from existing, even though local primitives always exist. This beautiful interplay between analysis and geometry is one of the reasons complex analysis is such a powerful and elegant subject.
+                    The existence of primitives connects complex analysis to the geometry of the underlying domain. Domains with holes (multiply connected domains) can prevent globally defined primitives from existing, even though local primitives always exist. This beautiful interplay between analysis and geometry is one of the reasons complex analysis is such a powerful and elegant subject. To understand it deeply, we need to understand differential forms.
                 </p>
 
                 <p style="font-size: 0.9rem; color: #7f8c8d; font-style: italic;">
                     <strong>Note:</strong> All diagrams and illustrations in this blog post are AI-generated visualizations created to help explain mathematical concepts.
                 </p>
+
+                <h3>Setup: Differential Forms and the Exterior Derivative</h3>
+
+                <p>
+                    Let \((x^1, \dots, x^n)\) be coordinates on \(\mathbb{R}^n\). A <strong>differential \(k\)-form</strong> is an expression of the form:
+                </p>
+
+                <p>
+                    $$\omega = \sum_{i_1 < \cdots < i_k} f_{i_1\cdots i_k}(x)\, dx^{i_1} \wedge \cdots \wedge dx^{i_k}$$
+                </p>
+
+                <p>
+                    where the <strong>wedge product</strong> \(\wedge\) is bilinear and alternating:
+                </p>
+
+                <p>
+                    $$dx^i \wedge dx^j = - dx^j \wedge dx^i, \qquad dx^i \wedge dx^i = 0$$
+                </p>
+
+                <p>
+                    The <strong>exterior derivative</strong> is an operator \(d : \Omega^k(\mathbb{R}^n) \to \Omega^{k+1}(\mathbb{R}^n)\) defined on a \(k\)-form \(\omega\) by:
+                </p>
+
+                <p>
+                    $$d\omega = \sum_{i_1 < \cdots < i_k} df_{i_1\cdots i_k} \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_k}$$
+                </p>
+
+                <p>
+                    where for a function \(f\), \(df = \sum_{j=1}^n \frac{\partial f}{\partial x^j}\,dx^j\).
+                </p>
+
+                <h2>The Fundamental Identity \(d^2 = 0\)</h2>
+
+                <p>
+                    The identity \(d^2 = 0\) is one of the most important facts in differential geometry. It states that the exterior derivative applied twice always gives zero. This single identity contains within it the classical vector calculus identities \(\nabla \cdot (\nabla \times \mathbf{F}) = 0\) and \(\nabla \times (\nabla f) = \mathbf{0}\).
+                </p>
+
+                
+
+
+                <h3>Connection to Vector Calculus</h3>
+
+                <p>
+                    In \(\mathbb{R}^3\), this identity contains the classical divergence and curl identities. To see this, we identify:
+                </p>
+
+                <ul>
+                    <li><strong>0-forms:</strong> functions \(f\)</li>
+                    <li><strong>1-forms:</strong> correspond to vector fields via \(\omega = f_1\,dx + f_2\,dy + f_3\,dz \leftrightarrow \mathbf{F} = (f_1, f_2, f_3)\)</li>
+                    <li><strong>2-forms:</strong> correspond to vector fields via \(\omega = g_1\,dy \wedge dz + g_2\,dz \wedge dx + g_3\,dx \wedge dy \leftrightarrow \mathbf{G} = (g_1, g_2, g_3)\)</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>The curl identity \(\nabla \times (\nabla f) = \mathbf{0}\):</strong> For a \(0\)-form \(f\),
+                    </p>
+
+                    <p>
+                        $$d^2 f = d\!\left(\frac{\partial f}{\partial x}\,dx + \frac{\partial f}{\partial y}\,dy + \frac{\partial f}{\partial z}\,dz\right) = \left(\frac{\partial^2 f}{\partial y \partial x} - \frac{\partial^2 f}{\partial x \partial y}\right)dx \wedge dy + \cdots = 0$$
+                    </p>
+
+                    <p>
+                        This is \(\nabla \times (\nabla f) = \mathbf{0}\) in disguise.
+                    </p>
+                </div>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>The divergence identity \(\nabla \cdot (\nabla \times \mathbf{F}) = 0\):</strong> For a \(1\)-form \(\omega = f_1\,dx + f_2\,dy + f_3\,dz\),
+                    </p>
+
+                    <p>
+                        $$d\omega = \left(\frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z}\right)dy \wedge dz + \left(\frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x}\right)dz \wedge dx + \left(\frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y}\right)dx \wedge dy$$
+                    </p>
+
+                    <p>
+                        Then \(d^2\omega = 0\) gives three equations, one of which is:
+                    </p>
+
+                    <p>
+                        $$\frac{\partial}{\partial x}\!\left(\frac{\partial f_3}{\partial y} - \frac{\partial f_2}{\partial z}\right) + \frac{\partial}{\partial y}\!\left(\frac{\partial f_1}{\partial z} - \frac{\partial f_3}{\partial x}\right) + \frac{\partial}{\partial z}\!\left(\frac{\partial f_2}{\partial x} - \frac{\partial f_1}{\partial y}\right) = 0$$
+                    </p>
+
+                    <p>
+                        This is exactly \(\nabla \cdot (\nabla \times \mathbf{F}) = 0\) where \(\mathbf{F} = (f_1, f_2, f_3)\).
+                    </p>
+                </div>
+
+                <p>
+                    The identity \(d^2 = 0\) is fundamental. It leads us directly to two of the most important concepts in differential geometry and topology: <strong>closed forms</strong> and <strong>exact forms</strong>.
+                </p>
+
+                <h3>Closed and Exact Forms</h3>
+
+                <div class="definition-box">
+                    <h4>Definition: Closed and Exact Forms</h4>
+                    <p>
+                        A differential \(k\)-form \(\omega\) is called <strong>closed</strong> if \(d\omega = 0\).
+                    </p>
+                    <p>
+                        A differential \(k\)-form \(\omega\) is called <strong>exact</strong> if there exists a \((k-1)\)-form \(\eta\) such that \(\omega = d\eta\).
+                    </p>
+                </div>
+
+                <p>
+                    The identity \(d^2 = 0\) immediately tells us that <strong>every exact form is closed</strong>: if \(\omega = d\eta\), then \(d\omega = d(d\eta) = d^2\eta = 0\). The converse question—<strong>is every closed form exact?</strong>—is where topology enters the picture in a profound way.
+                </p>
+
+                <p>
+                    In vector calculus language, this question takes on a familiar form:
+                </p>
+
+                <ul>
+                    <li><strong>For 0-forms (functions):</strong> If \(\nabla f = \mathbf{0}\), is \(f\) constant? (Yes, on connected domains)</li>
+                    <li><strong>For 1-forms (vector fields):</strong> If \(\nabla \times \mathbf{A} = \mathbf{0}\), does there exist a potential \(\psi\) with \(\mathbf{A} = \nabla \psi\)?</li>
+                    <li><strong>For 2-forms (vector fields in \(\mathbb{R}^3\)): </strong> If \(\nabla \cdot \mathbf{B} = 0\), does there exist a vector potential \(\mathbf{A}\) with \(\mathbf{B} = \nabla \times \mathbf{A}\)?</li>
+                </ul>
+
+                <p>
+                    The middle question is precisely the one Feynman got wrong! The statement "\(\nabla \times \mathbf{A} = \mathbf{0} \Rightarrow \mathbf{A} = \nabla \psi\)" is equivalent to saying "every closed 1-form is exact," and this <strong>depends on the topology of the domain</strong>.
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>Poincaré Lemma:</strong> On a <strong>simply connected domain</strong> (a domain without holes), every closed form is exact. In particular, if \(\Omega \subset \mathbb{R}^n\) is star-shaped (a special case of simply connected), then:
+                    </p>
+                    <ul>
+                        <li>If \(\nabla \times \mathbf{A} = \mathbf{0}\), then \(\mathbf{A} = \nabla \psi\) for some potential \(\psi\)</li>
+                        <li>If \(\nabla \cdot \mathbf{B} = 0\), then \(\mathbf{B} = \nabla \times \mathbf{A}\) for some vector potential \(\mathbf{A}\)</li>
+                    </ul>
+                    <p>
+                        The Poincaré Lemma fails when the domain has holes!
+                    </p>
+                </div>
+
+                <h3>The Counterexample: Why Domain Topology Matters</h3>
+
+                <p>
+                    Consider the domain \(\Omega = \mathbb{R}^2 \setminus \{(0,0)\}\) (the plane with the origin removed). The 1-form
+                </p>
+
+                <p>
+                    $$\omega = \frac{-y\,dx + x\,dy}{x^2 + y^2}$$
+                </p>
+
+                <p>
+                    is <strong>closed</strong> (you can verify that \(d\omega = 0\)), but it is <strong>not exact</strong> on \(\Omega\)! If we integrate \(\omega\) around the unit circle \(\gamma(t) = (\cos t, \sin t)\):
+                </p>
+
+                <p>
+                    $$\oint_\gamma \omega = \int_0^{2\pi} \frac{-\sin t(-\sin t) + \cos t(\cos t)}{\cos^2 t + \sin^2 t}\,dt = \int_0^{2\pi} dt = 2\pi \neq 0$$
+                </p>
+
+                <p>
+                    If \(\omega\) were exact, say \(\omega = d\eta\), then by the Fundamental Theorem of Calculus, \(\oint_\gamma \omega = \eta(\gamma(2\pi)) - \eta(\gamma(0)) = 0\) since \(\gamma\) is a closed curve. The non-zero integral proves \(\omega\) cannot be exact.
+                </p>
+
+                <p>
+                    In vector calculus notation, this 1-form corresponds to the vector field:
+                </p>
+
+                <p>
+                    $$\mathbf{A} = \left(\frac{-y}{x^2 + y^2}, \frac{x}{x^2 + y^2}\right)$$
+                </p>
+
+                <p>
+                    which satisfies \(\nabla \times \mathbf{A} = 0\) everywhere in \(\Omega\), yet \(\mathbf{A}\) is <strong>not</strong> the gradient of any scalar function. This is the precise counterexample to Feynman's claim!
+                </p>
+
+                <h3>The Connection to \(f(z) = \frac{1}{z}\) and Cauchy-Riemann Equations</h3>
+
+                <p>
+                    Remarkably, the counterexample \(\omega = \frac{-y\,dx + x\,dy}{x^2 + y^2}\) is <strong>exactly</strong> the imaginary part of the complex differential form \(\frac{1}{z}\,dz\)! Let's see this connection explicitly.
+                </p>
+
+                <p>
+                    Write \(z = x + iy\) and \(dz = dx + i\,dy\). Then:
+                </p>
+
+                <p>
+                    $$\frac{1}{z}\,dz = \frac{1}{x+iy}(dx + i\,dy) = \frac{x-iy}{x^2+y^2}(dx + i\,dy)$$
+                </p>
+
+                <p>
+                    Multiplying out and separating real and imaginary parts:
+                </p>
+
+                <p>
+                    $$\frac{1}{z}\,dz = \frac{x\,dx + y\,dy}{x^2+y^2} + i\,\frac{-y\,dx + x\,dy}{x^2+y^2}$$
+                </p>
+
+                <p>
+                    The <strong>imaginary part</strong> is precisely our 1-form \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\)! So when we compute \(\oint_\gamma \frac{dz}{z}\) around the unit circle:
+                </p>
+
+                <p>
+                    $$\oint_\gamma \frac{dz}{z} = \oint_\gamma \frac{x\,dx + y\,dy}{x^2+y^2} + i\oint_\gamma \frac{-y\,dx + x\,dy}{x^2+y^2} = 0 + i(2\pi) = 2\pi i$$
+                </p>
+
+                <p>
+                    The real part vanishes (it's exact: \(d(\frac{1}{2}\log(x^2+y^2))\)), but the imaginary part gives \(2\pi\)—the obstruction to having a primitive!
+                </p>
+
+                <div class="highlight-box">
+                    <h4>The Cauchy-Riemann Connection</h4>
+                    <p>
+                        Write \(f(z) = \frac{1}{z} = u(x,y) + i\,v(x,y)\) where \(u = \frac{x}{x^2+y^2}\) and \(v = \frac{-y}{x^2+y^2}\).
+                    </p>
+                    <p>
+                        The Cauchy-Riemann equations are:
+                    </p>
+                    <p>
+                        $$\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}$$
+                    </p>
+                    <p>
+                        You can verify these hold everywhere except \((0,0)\)! This confirms \(\frac{1}{z}\) is holomorphic on \(\mathbb{C} \setminus \{0\}\).
+                    </p>
+                </div>
+
+                <p>
+                    Now let's understand the deep connection between the Cauchy-Riemann equations and 2D differential forms. For any complex function \(f = u + iv\), the complex differential \(f(z)\,dz\) decomposes into two real 1-forms:
+                </p>
+
+                <p>
+                    $$f(z)\,dz = (u+iv)(dx+i\,dy) = \underbrace{(u\,dx - v\,dy)}_{\text{real part}} + i\underbrace{(v\,dx + u\,dy)}_{\text{imaginary part}}$$
+                </p>
+
+                <p>
+                    Let's compute the exterior derivative of the imaginary part \(\omega_2 = v\,dx + u\,dy\):
+                </p>
+
+                <p>
+                    $$d\omega_2 = d(v\,dx + u\,dy) = \left(\frac{\partial v}{\partial x}\,dx + \frac{\partial v}{\partial y}\,dy\right) \wedge dx + \left(\frac{\partial u}{\partial x}\,dx + \frac{\partial u}{\partial y}\,dy\right) \wedge dy$$
+                </p>
+
+                <p>
+                    Using the fact that \(dx \wedge dx = dy \wedge dy = 0\) and \(dy \wedge dx = -dx \wedge dy\), we get:
+                </p>
+
+                <p>
+                    $$d\omega_2 = \frac{\partial v}{\partial y}\,dy \wedge dx + \frac{\partial u}{\partial x}\,dx \wedge dy = \left(\frac{\partial u}{\partial x} - \frac{\partial v}{\partial y}\right)dx \wedge dy$$
+                </p>
+
+                <p>
+                    <strong>The Cauchy-Riemann equation \(\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\) makes \(d\omega_2 = 0\!</strong>
+                </p>
+
+                <p>
+                    Similarly, for the real part \(\omega_1 = u\,dx - v\,dy\):
+                </p>
+
+                <p>
+                    $$d\omega_1 = d(u\,dx - v\,dy) = \left(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x}\right)dx \wedge dy$$
+                </p>
+
+                <p>
+                    <strong>The second Cauchy-Riemann equation \(\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\) makes \(d\omega_1 = 0\!</strong>
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>Key Insight:</strong> The Cauchy-Riemann equations are <strong>equivalent</strong> to saying that both the real and imaginary parts of \(f(z)\,dz\) are <strong>closed 1-forms</strong>! This is the profound link between complex analysis and differential forms.
+                    </p>
+                    <p>
+                        For \(f(z) = \frac{1}{z}\), both \(\omega_1 = \frac{x\,dx + y\,dy}{x^2+y^2}\) and \(\omega_2 = \frac{-y\,dx + x\,dy}{x^2+y^2}\) are closed (you can verify this directly). However:
+                    </p>
+                    <ul>
+                        <li>\(\omega_1\) is <strong>exact</strong>: \(\omega_1 = d\!\left(\frac{1}{2}\log(x^2+y^2)\right)\)</li>
+                        <li>\(\omega_2\) is <strong>NOT exact</strong> on \(\mathbb{R}^2 \setminus \{(0,0)\}\): \(\oint_\gamma \omega_2 = 2\pi \neq 0\)</li>
+                    </ul>
+                </div>
+
+                <p>
+                    This asymmetry is crucial! The real part has a primitive (\(\frac{1}{2}\log(x^2+y^2) = \log|z|\)), but the imaginary part does not. The imaginary part would be \(d(\arg z) = d\theta\), but the angle function \(\theta\) is <strong>not single-valued</strong> on \(\mathbb{R}^2 \setminus \{(0,0)\}\)—as you go around the origin once, \(\theta\) increases by \(2\pi\)!
+                </p>
+
+                <p>
+                    In complex notation, this is saying:
+                </p>
+
+                <p>
+                    $$\frac{dz}{z} = d(\log|z|) + i\,d(\arg z)$$
+                </p>
+
+                <p>
+                    The term \(d(\log|z|)\) is well-defined (it's exact), but \(d(\arg z)\) is <strong>not</strong> the differential of a single-valued function on the punctured plane. This is why \(\frac{1}{z}\) has no primitive—there's no way to define \(\log(z) = \log|z| + i\arg(z)\) as a single-valued holomorphic function on \(\mathbb{C} \setminus \{0\}\)!
+                </p>
+
+                <div class="highlight-box">
+                    <p>
+                        <strong>The Fundamental Obstruction:</strong> The non-exactness of \(\omega_2 = \frac{-y\,dx + x\,dy}{x^2+y^2}\) is precisely why \(\log(z)\) can't be defined as a single-valued function. You need to introduce a "branch cut" (remove a ray from the origin) to make \(\arg(z)\) single-valued. On any simply connected subdomain (like the slit plane \(\mathbb{C} \setminus (-\infty,0]\)), \(\frac{1}{z}\) <strong>does</strong> have a primitive: \(\log(z)\)!
+                    </p>
+                    <p>
+                        This beautifully demonstrates the Poincaré Lemma: locally, closed forms are exact. At any point \(z_0 \neq 0\), you can always find a small neighborhood where \(\frac{1}{z} = \frac{d}{dz}\log(z)\). But globally on \(\mathbb{C} \setminus \{0\}\), the hole at the origin prevents these local primitives from patching together into a single global primitive.
+                    </p>
+                </div>
+
+                <p>
+                    To summarize the chain of reasoning:
+                </p>
+
+                <ol>
+                    <li><strong>Cauchy-Riemann equations</strong> \(\iff\) <strong>Both parts of \(f(z)\,dz\) are closed</strong></li>
+                    <li><strong>Closed does not imply exact</strong> on non-simply connected domains</li>
+                    <li><strong>\(\omega_2\) is closed but not exact</strong> \(\iff\) \(\oint_\gamma \omega_2 \neq 0\) \(\iff\) \(\oint_\gamma \frac{dz}{z} \neq 0\)</li>
+                    <li><strong>\(\oint_\gamma \frac{dz}{z} \neq 0\)</strong> \(\iff\) <strong>\(\frac{1}{z}\) has no primitive</strong></li>
+                </ol>
+
+                <p>
+                    Thus, the topological obstruction (the hole at the origin) manifests as:
+                </p>
+
+                <ul>
+                    <li>A closed 1-form that isn't exact (\(\omega_2\))</li>
+                    <li>A holomorphic function without a primitive (\(\frac{1}{z}\))</li>
+                    <li>A curl-free vector field that isn't a gradient (\(\mathbf{A}\))</li>
+                </ul>
+
+                <p>
+                    If \(\frac{1}{z}\) had a primitive \(F(z)\) on \(\mathbb{C} \setminus \{0\}\), then by the Fundamental Theorem of Calculus for complex functions:
+                </p>
+
+                <p>
+                    $$\oint_\gamma \frac{dz}{z} = F(\gamma(2\pi)) - F(\gamma(0)) = 0$$
+                </p>
+
+                <p>
+                    for any closed curve \(\gamma\). But \(\oint_{|z|=1} \frac{dz}{z} = 2\pi i \neq 0\), providing a direct contradiction. The non-existence of a primitive for \(\frac{1}{z}\) is <strong>equivalent</strong> to the fact that our 1-form \(\omega\) is closed but not exact.
+                </p>
+
+                <p>
+                    This beautiful connection shows that:
+                </p>
+
+                <ul>
+                    <li><strong>Complex analysis:</strong> \(\frac{1}{z}\) has no primitive on \(\mathbb{C} \setminus \{0\}\)</li>
+                    <li><strong>Differential forms:</strong> \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\) is closed but not exact</li>
+                    <li><strong>Vector calculus:</strong> \(\mathbf{A} = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}\right)\) has zero curl but is not a gradient</li>
+                </ul>
+
+                <p>
+                    These are <strong>three manifestations of the same topological obstruction</strong>—the hole at the origin!
+                </p>
+
+
 
                 <h2>Conclusion</h2>
                 <p>
@@ -576,7 +922,46 @@
                 <div class="quote" style="text-align: center; font-style: italic; color: #7f8c8d; margin: 3rem 0; font-size: 1.1rem;">
                     "The profound study of nature is the most fertile source of mathematical discoveries." – Joseph Fourier
                 </div>
-            </div>
+
+                <hr style="border: none; border-top: 2px solid #e0e0e0; margin: 3rem 0;">
+
+                <h2>Appendix: The Fundamental Identity \(d^2 = 0\)</h2>
+
+                
+                <h3>Theorem: \(d^2 = 0\)</h3>
+
+                <div class="highlight-box">
+                    <h4>Proof</h4>
+                    <p>
+                        Let \(\omega = \sum_{i_1 < \cdots < i_k} f_{i_1\cdots i_k}\, dx^{i_1} \wedge \cdots \wedge dx^{i_k}\). First compute:
+                    </p>
+
+                    <p>
+                        $$d\omega = \sum_{i_1 < \cdots < i_k} \sum_{j=1}^n \frac{\partial f_{i_1\cdots i_k}}{\partial x^j}\, dx^j \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_k}$$
+                    </p>
+
+                    <p>
+                        Applying \(d\) again:
+                    </p>
+
+                    <p>
+                        $$d(d\omega) = \sum_{i_1 < \cdots < i_k} \sum_{j=1}^n d\!\left(\frac{\partial f_{i_1\cdots i_k}}{\partial x^j}\right) \wedge dx^j \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_k}$$
+                    </p>
+
+                    <p>
+                        Since \(d\!\left(\frac{\partial f}{\partial x^j}\right) = \sum_{\ell=1}^n \frac{\partial^2 f}{\partial x^\ell \partial x^j}\,dx^\ell\), we have:
+                    </p>
+
+                    <p>
+                        $$d(d\omega) = \sum_{i_1 < \cdots < i_k} \sum_{j,\ell} \frac{\partial^2 f_{i_1\cdots i_k}}{\partial x^\ell \partial x^j}\, dx^\ell \wedge dx^j \wedge dx^{i_1} \wedge \cdots \wedge dx^{i_k}$$
+                    </p>
+
+                    <p>
+                        By the equality of mixed partial derivatives, \(\frac{\partial^2 f}{\partial x^\ell \partial x^j} = \frac{\partial^2 f}{\partial x^j \partial x^\ell}\), while wedge products anticommute: \(dx^\ell \wedge dx^j = -dx^j \wedge dx^\ell\). Each pair of terms with indices \(j, \ell\) cancels with its partner obtained by swapping \(j\) and \(\ell\). Hence all terms vanish, and \(d^2\omega = 0\). ∎
+                    </p>
+                </div>
+
+                
         </article>
     </main>
 
