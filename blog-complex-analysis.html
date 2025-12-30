@@ -250,7 +250,7 @@
                     <p style="font-style: italic;">
                         "The interesting theorem is that if the curl of \(\mathbf{A}\) is zero, then \(\mathbf{A}\) is always the gradient of something—there is some scalar field \(\psi\) such that \(\mathbf{A} = \nabla \psi\). In other words, we have the theorem:
                     </p>
-                    <div class="equation-box">
+                    <div>
                         $$\nabla \times \mathbf{A} = 0 \quad \Rightarrow \quad \mathbf{A} = \nabla \psi \tag{2.50}$$
                     </div>
                 </div>
@@ -325,7 +325,7 @@
                 <div class="definition-box">
                     <h4>Definition: Local Primitive</h4>
                     <p>
-                        We say that \(f\) <strong>admits a primitive at a point</strong> \(z_0 \in \Omega\) if there exists an open neighborhood \(U \subset \Omega\) with \(z_0 \in U\) and a holomorphic function \(F : U \to \mathbb{C}\) such that \(F'(z) = f(z)\) for all \(z \in U\).
+                        We say that \(f\) <strong>admits a primitive at a point</strong> \(z_0 \in \Omega\) if there exists an open neighborhood \(U \subset \Omega\) with \(z_0 \in U\) and a holomorphic function \(F : U \to \mathbb{C}\) such that \(F'(z) = f(z)\) for all \(z \in U\). Interestingly, every holomorphic function admits a local primitive at every point of its domain.
                     </p>
                 </div>
 
@@ -338,22 +338,20 @@
 
                 <h2>The Key Distinction</h2>
                 <p>
-                    The distinction between local and global primitives is crucial in complex analysis. Every holomorphic function admits a local primitive at every point of its domain – this follows from the existence of power series expansions. However, the existence of a global primitive is a much more subtle question that depends on the geometry of the domain \(\Omega\).
+                    The distinction between local and global primitives is crucial in complex analysis. Every holomorphic function admits a local primitive at every point of its domain, this follows from the existence of power series expansions. However, the existence of a global primitive is a much more subtle question that depends on the geometry of the domain \(\Omega\).
                 </p>
 
                 <h2 id="primitives-and-integrals">Primitives and Integrals: The Fundamental Connection</h2>
+                
+                <h3>Path independence and the primitive</h3>
+                <p>
+                    Moreover, if \(F\) is a global primitive of \(f\), then the integral of \(f\) between any two points \(z_1, z_2 \in \Omega\) can be expressed as \(\int_\gamma f(z) \, dz = F(z_2) - F(z_1)\), where \(\gamma\) is <strong>any</strong> path in \(\Omega\) from \(z_1\) to \(z_2\). This shows that the integral is <strong>path-independent</strong> – it depends only on the endpoints, not on the specific curve chosen. This is a remarkable property that distinguishes functions with global primitives.
+                </p>
+
 
                 <h3>If \(f\) has a global primitive, then integrals vanish</h3>
                 <p>
                     Suppose \(f\) admits a global primitive \(F\) on \(\Omega\). Then for any closed curve \(\gamma : [a,b] \to \Omega\) (where \(\gamma(a) = \gamma(b)\)), we have:
-                </p>
-
-                <p>
-                    $$\oint_\gamma f(z) \, dz = \int_a^b f(\gamma(t)) \gamma'(t) \, dt = \int_a^b F'(\gamma(t)) \gamma'(t) \, dt$$
-                </p>
-
-                <p>
-                    By the chain rule, this becomes:
                 </p>
 
                 <p>
@@ -364,11 +362,7 @@
                     since \(\gamma(a) = \gamma(b)\). This is a direct consequence of the Fundamental Theorem of Calculus applied to complex functions.
                 </p>
 
-                <h3>Path independence and the primitive</h3>
-                <p>
-                    Moreover, if \(F\) is a global primitive of \(f\), then the integral of \(f\) between any two points \(z_1, z_2 \in \Omega\) can be expressed as \(\int_\gamma f(z) \, dz = F(z_2) - F(z_1)\), where \(\gamma\) is <strong>any</strong> path in \(\Omega\) from \(z_1\) to \(z_2\). This shows that the integral is <strong>path-independent</strong> – it depends only on the endpoints, not on the specific curve chosen. This is a remarkable property that distinguishes functions with global primitives.
-                </p>
-
+                
                 <h3>The converse: when vanishing integrals imply existence of primitives</h3>
                 <p>
                     The converse is equally profound: if a holomorphic function \(f\) satisfies \(\oint_\gamma f(z) \, dz = 0\) for every closed curve \(\gamma\) in \(\Omega\), then \(f\) admits a global primitive on \(\Omega\). The construction of such a primitive proceeds as follows: fix a point \(z_0 \in \Omega\) and define for any \(z \in \Omega\):
@@ -381,7 +375,7 @@
                 <p>
                     where \(\gamma_z\) is <strong>any</strong> curve in \(\Omega\) from \(z_0\) to \(z\). The condition that all closed integrals vanish guarantees that this definition is independent of the choice of curve \(\gamma_z\), making \(F\) well-defined. One can then verify that \(F'(z) = f(z)\) for all \(z \in \Omega\).
                 </p>
-                <h3 id="role-of-domain-geometry">The Role of Domain Geometry</h3>
+                <h2 id="role-of-domain-geometry">The Role of Domain Geometry</h2>
                 <h4>A Special Case: Star-Shaped Domains</h4>
                 <p>
                     An important class of domains where every holomorphic function admits a primitive is the <strong>star-shaped domains</strong>. A domain \(\Omega \subset \mathbb{C}\) is called <strong>star-shaped</strong> (with respect to a point \(z_0 \in \Omega\)) if for every point \(z \in \Omega\), the entire line segment from \(z_0\) to \(z\) lies within \(\Omega\): \(\{z_0 + t(z - z_0) : t \in [0,1]\} \subset \Omega\) for all \(z \in \Omega\).
@@ -869,6 +863,24 @@
 
                 <div class="quote" style="text-align: center; font-style: italic; color: #7f8c8d; margin: 3rem 0; font-size: 1.1rem;">
                     "The profound study of nature is the most fertile source of mathematical discoveries." – Joseph Fourier
+                </div>
+
+                <hr style="border: none; border-top: 2px solid #e0e0e0; margin: 3rem 0;">
+
+                <h3>References and Further Reading</h3>
+
+                <div class="highlight-box" style="background: #fffaf0; border-left: 4px solid #e67e22;">
+                    <p style="margin-bottom: 1rem;"><strong>Books:</strong></p>
+                    <ul style="line-height: 1.8;">
+                        <li>Nehari, Z. <em>Conformal Mapping</em>. Dover Publications. (Classic treatment of complex analysis with geometric insights)</li>
+                        <li>Stein, E. M. & Shakarchi, R. <em>Complex Analysis</em>. Princeton University Press. (Princeton Lectures in Analysis, Volume II)</li>
+                    </ul>
+
+                    <p style="margin: 1.5rem 0 1rem 0;"><strong>Online Resources:</strong></p>
+                    <ul style="line-height: 1.8;">
+                        <li>Prof. G. K. Srinivasan's lecture notes on Complex Analysis - Available on his <a href="https://www.math.iitb.ac.in/~gopal/" target="_blank" style="color: #e67e22; text-decoration: none;">IIT Bombay Mathematics Department webpage</a></li>
+                        <li><em>The Feynman Lectures on Physics, Volume II</em> - Chapter 2 (for the original context of the vector calculus discussion)</li>
+                    </ul>
                 </div>
 
                 <hr style="border: none; border-top: 2px solid #e0e0e0; margin: 3rem 0;">
