@@ -267,118 +267,47 @@
                 <p>
                     What makes this particularly serious is that such "topological obstructions" appear everywhere in physics: from the Aharonov-Bohm effect to magnetic monopoles, from fluid dynamics around vortices to electromagnetic theory in non-simply-connected regions. Ignoring the topology can lead to incorrect physical predictions and flawed mathematical reasoning. The "Feynman mistake" is therefore not just a mathematical footnote, rather it's a fundamental warning that domain geometry matters.
                 </p>
-                
+
                 <p>
-                     In this blog, I aim to share some insights into the relation between complex analysis and differential topology, and explain why this mistake should not be ignored.
+                    In this blog, using complex analysis I plan to discuss that many important theorem like Cauchy Integral Theorem, rest on this underlying principle. I aim to share some insights into the relation between complex analysis and differential topology, and explain why this mistake should not be ignored.
                 </p>
 
-                <div class="blog-featured-image">
-                    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background gradient -->
-                        <defs>
-                            <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
-                            </linearGradient>
-                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" opacity="0.8"/>
-                            </marker>
-                        </defs>
+                <p>
+                    <strong>What we'll discover:</strong> These three seemingly different statements are <strong>fundamentally equivalent</strong>. They are three manifestations of the same topological obstruction:
+                </p>
 
-                        <rect width="800" height="350" fill="url(#bgGradient)"/>
+                <ul>
+                    <li><strong>Complex analysis:</strong> \(\frac{1}{z}\) has no primitive on \(\mathbb{C} \setminus \{0\}\)</li>
+                    <li><strong>Differential forms:</strong> \(\omega = \frac{-y\,dx + x\,dy}{x^2+y^2}\) is closed but not exact</li>
+                    <li><strong>Vector calculus:</strong> \(\mathbf{A} = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}\right)\) has zero curl but is not a gradient</li>
+                </ul>
 
-                        <!-- Grid lines -->
-                        <g opacity="0.1">
-                            <line x1="100" y1="50" x2="100" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="200" y1="50" x2="200" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="300" y1="50" x2="300" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="400" y1="50" x2="400" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="500" y1="50" x2="500" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="600" y1="50" x2="600" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="700" y1="50" x2="700" y2="300" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="50" y1="100" x2="750" y2="100" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="50" y1="175" x2="750" y2="175" stroke="#ffffff" stroke-width="1"/>
-                            <line x1="50" y1="250" x2="750" y2="250" stroke="#ffffff" stroke-width="1"/>
-                        </g>
+                <p>
+                    All three fail because of the <strong>hole at the origin</strong>!
+                </p>
 
-                        <!-- Title -->
-                        <text x="400" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#ffffff" opacity="0.95">∇ × A = 0 does NOT imply A = ∇ψ</text>
+ 
 
-                        <!-- Vector field showing curl - left side (punctured domain) -->
-                        <g transform="translate(200, 175)">
-                            <!-- Punctured hole -->
-                            <circle cx="0" cy="0" r="30" fill="#1a1a2e" stroke="#e74c3c" stroke-width="3" opacity="0.9"/>
-                            <text x="0" y="6" text-anchor="middle" font-size="14" fill="#e74c3c" font-weight="bold">×</text>
-
-                            <!-- Rotating vectors around hole showing curl -->
-                            <g opacity="0.95">
-                                <!-- Vector at angle 0 -->
-                                <line x1="50" y1="0" x2="75" y2="0" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 45 -->
-                                <line x1="35" y1="-35" x2="52" y2="-52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 90 -->
-                                <line x1="0" y1="-50" x2="0" y2="-75" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 135 -->
-                                <line x1="-35" y1="-35" x2="-52" y2="-52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 180 -->
-                                <line x1="-50" y1="0" x2="-75" y2="0" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 225 -->
-                                <line x1="-35" y1="35" x2="-52" y2="52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 270 -->
-                                <line x1="0" y1="50" x2="0" y2="75" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <!-- Vector at angle 315 -->
-                                <line x1="35" y1="35" x2="52" y2="52" stroke="#3498db" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                            </g>
-
-                            <!-- Circular integration path -->
-                            <circle cx="0" cy="0" r="95" fill="none" stroke="#f39c12" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.8"/>
-                            <text x="0" y="110" text-anchor="middle" font-size="12" fill="#f39c12" font-weight="bold">∮ γ A·dl ≠ 0</text>
-
-                            <text x="0" y="130" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-weight="bold">Domain with Hole</text>
-                            <text x="0" y="148" text-anchor="middle" font-size="11" fill="#bdc3c7" opacity="0.8">(non-simply connected)</text>
-                        </g>
-
-                        <!-- Arrow separator -->
-                        <g transform="translate(400, 175)">
-                            <line x1="-40" y1="0" x2="40" y2="0" stroke="#ffffff" stroke-width="2.5" opacity="0.6"/>
-                            <polygon points="-45,-7 -52,0 -45,7" fill="#ffffff" opacity="0.6"/>
-                            <polygon points="45,-7 52,0 45,7" fill="#ffffff" opacity="0.6"/>
-                        </g>
-
-                        <!-- Simply connected domain - right side -->
-                        <g transform="translate(600, 175)">
-                            <!-- Gradient field showing conservative vector field -->
-                            <g opacity="0.95">
-                                <line x1="-60" y1="50" x2="-35" y2="35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <line x1="0" y1="60" x2="0" y2="35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <line x1="60" y1="50" x2="35" y2="35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-
-                                <line x1="-60" y1="0" x2="-35" y2="0" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <line x1="60" y1="0" x2="35" y2="0" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-
-                                <line x1="-60" y1="-50" x2="-35" y2="-35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <line x1="0" y1="-60" x2="0" y2="-35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                                <line x1="60" y1="-50" x2="35" y2="-35" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrowhead)"/>
-                            </g>
-
-                            <!-- Closed curve with zero integral -->
-                            <ellipse cx="0" cy="0" rx="85" ry="60" fill="none" stroke="#f39c12" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.8"/>
-                            <text x="0" y="80" text-anchor="middle" font-size="12" fill="#f39c12" font-weight="bold">∮ γ A·dl = 0</text>
-
-                            <text x="0" y="105" text-anchor="middle" font-size="14" fill="#ffffff" opacity="0.9" font-weight="bold">Simply Connected</text>
-                            <text x="0" y="123" text-anchor="middle" font-size="11" fill="#bdc3c7" opacity="0.8">(no holes)</text>
-                        </g>
-
-                        <!-- Bottom explanation -->
-                        <text x="400" y="315" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#3498db" opacity="0.95">The key difference: Topology determines whether a curl-free field is conservative</text>
-                        <text x="400" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#bdc3c7" opacity="0.8">∇ × (∇ψ) = 0 always holds, but ∇ × A = 0 ⇒ A = ∇ψ requires simply connected domain</text>
-                    </svg>
+                <div class="highlight-box" style="background: #f0f7fa; border-left: 4px solid #2c3e50;">
+                    <h4 style="color: #2c3e50; margin-bottom: 1rem;">Table of Contents</h4>
+                    <ol style="line-height: 2;">
+                        <li><a href="#setting-the-stage" style="color: #3498db; text-decoration: none;">Setting the Stage</a></li>
+                        <li><a href="#local-vs-global-primitives" style="color: #3498db; text-decoration: none;">Local vs Global Primitives</a></li>
+                        <li><a href="#primitives-and-integrals" style="color: #3498db; text-decoration: none;">Primitives and Integrals</a></li>
+                        <li><a href="#role-of-domain-geometry" style="color: #3498db; text-decoration: none;">The Role of Domain Geometry</a></li>
+                        <li><a href="#when-do-global-primitives-exist" style="color: #3498db; text-decoration: none;">When Do Global Primitives Exist?</a></li>
+                        <li><a href="#geometric-interpretation" style="color: #3498db; text-decoration: none;">Geometric Interpretation</a></li>
+                        <li><a href="#differential-forms" style="color: #3498db; text-decoration: none;">Differential Forms and the Exterior Derivative</a></li>
+                        <li><a href="#d2-0" style="color: #3498db; text-decoration: none;">The Fundamental Identity d² = 0</a></li>
+                        <li><a href="#closed-exact-forms" style="color: #3498db; text-decoration: none;">Closed and Exact Forms</a></li>
+                        <li><a href="#counterexample" style="color: #3498db; text-decoration: none;">The Counterexample: Why Domain Topology Matters</a></li>
+                        <li><a href="#connection-1z" style="color: #3498db; text-decoration: none;">The Connection to 1/z and Cauchy-Riemann Equations</a></li>
+                        <li><a href="#cauchy-theorem" style="color: #3498db; text-decoration: none;">Why This Matters for Cauchy's Theorem</a></li>
+                        <li><a href="#conclusion" style="color: #3498db; text-decoration: none;">Conclusion</a></li>
+                    </ol>
                 </div>
-                <p class="image-caption">
-                    <strong>Figure 1:</strong> Visualization of the topological obstruction to the converse of curl-free implies conservative. Left: A curl-free field around a punctured domain that is not conservative. Right: A gradient field on a simply connected domain. (AI-generated illustration)
-                </p>
 
-                <h2>Setting the Stage</h2>
+                <h2 id="setting-the-stage">Setting the Stage</h2>
                 <p>
                     Let \(\Omega \subset \mathbb{C}\) be an open set, and let \(f : \Omega \to \mathbb{C}\) be a holomorphic function. Before we discuss primitives, let's understand what holomorphic means: a function is holomorphic if it is complex differentiable at every point in its domain, meaning the limit
                 </p>
@@ -391,7 +320,7 @@
                     exists and is the same regardless of how \(h\) approaches 0 in the complex plane.
                 </p>
 
-                <h2>Local vs Global Primitives</h2>
+                <h2 id="local-vs-global-primitives">Local vs Global Primitives</h2>
 
                 <div class="definition-box">
                     <h4>Definition: Local Primitive</h4>
@@ -412,7 +341,7 @@
                     The distinction between local and global primitives is crucial in complex analysis. Every holomorphic function admits a local primitive at every point of its domain – this follows from the existence of power series expansions. However, the existence of a global primitive is a much more subtle question that depends on the geometry of the domain \(\Omega\).
                 </p>
 
-                <h2>Primitives and Integrals: The Fundamental Connection</h2>
+                <h2 id="primitives-and-integrals">Primitives and Integrals: The Fundamental Connection</h2>
 
                 <h3>If \(f\) has a global primitive, then integrals vanish</h3>
                 <p>
@@ -452,7 +381,7 @@
                 <p>
                     where \(\gamma_z\) is <strong>any</strong> curve in \(\Omega\) from \(z_0\) to \(z\). The condition that all closed integrals vanish guarantees that this definition is independent of the choice of curve \(\gamma_z\), making \(F\) well-defined. One can then verify that \(F'(z) = f(z)\) for all \(z \in \Omega\).
                 </p>
-
+                <h3 id="role-of-domain-geometry">The Role of Domain Geometry</h3>
                 <h4>A Special Case: Star-Shaped Domains</h4>
                 <p>
                     An important class of domains where every holomorphic function admits a primitive is the <strong>star-shaped domains</strong>. A domain \(\Omega \subset \mathbb{C}\) is called <strong>star-shaped</strong> (with respect to a point \(z_0 \in \Omega\)) if for every point \(z \in \Omega\), the entire line segment from \(z_0\) to \(z\) lies within \(\Omega\): \(\{z_0 + t(z - z_0) : t \in [0,1]\} \subset \Omega\) for all \(z \in \Omega\).
@@ -503,7 +432,7 @@
                     Star-shaped domains are more general than simply connected domains (convex domains are a special case of star-shaped domains, where any point can serve as the star center). This result guarantees that on such domains, the integral of any holomorphic function around any closed curve is zero.
                 </p>
 
-                <h2>When Do Global Primitives Exist?</h2>
+                <h2 id="when-do-global-primitives-exist">When Do Global Primitives Exist?</h2>
                 <p>
                     Combining these results, we have the fundamental characterization: a holomorphic function \(f\) admits a global primitive on \(\Omega\) <strong>if and only if</strong> the integral of \(f\) around every closed curve in \(\Omega\) is zero.
                 </p>
@@ -560,7 +489,7 @@
                     </div>
                 </div>
 
-                <h2>Geometric Interpretation</h2>
+                <h2 id="geometric-interpretation">Geometric Interpretation</h2>
                 <p>
                     The existence of primitives connects complex analysis to the geometry of the underlying domain. Domains with holes (multiply connected domains) can prevent globally defined primitives from existing, even though local primitives always exist. This beautiful interplay between analysis and geometry is one of the reasons complex analysis is such a powerful and elegant subject. To understand it deeply, we need to understand differential forms.
                 </p>
@@ -569,7 +498,7 @@
                     <strong>Note:</strong> All diagrams and illustrations in this blog post are AI-generated visualizations created to help explain mathematical concepts.
                 </p>
 
-                <h3>Setup: Differential Forms and the Exterior Derivative</h3>
+                <h3 id="differential-forms">Setup: Differential Forms and the Exterior Derivative</h3>
 
                 <p>
                     Let \((x^1, \dots, x^n)\) be coordinates on \(\mathbb{R}^n\). A <strong>differential \(k\)-form</strong> is an expression of the form:
@@ -599,7 +528,7 @@
                     where for a function \(f\), \(df = \sum_{j=1}^n \frac{\partial f}{\partial x^j}\,dx^j\).
                 </p>
 
-                <h2>The Fundamental Identity \(d^2 = 0\)</h2>
+                <h2 id="d2-0">The Fundamental Identity \(d^2 = 0\)</h2>
 
                 <p>
                     The identity \(d^2 = 0\) is one of the most important facts in differential geometry. It states that the exterior derivative applied twice always gives zero. This single identity contains within it the classical vector calculus identities \(\nabla \cdot (\nabla \times \mathbf{F}) = 0\) and \(\nabla \times (\nabla f) = \mathbf{0}\).
@@ -660,7 +589,7 @@
                     The identity \(d^2 = 0\) is fundamental. It leads us directly to two of the most important concepts in differential geometry and topology: <strong>closed forms</strong> and <strong>exact forms</strong>.
                 </p>
 
-                <h3>Closed and Exact Forms</h3>
+                <h3 id="closed-exact-forms">Closed and Exact Forms</h3>
 
                 <div class="definition-box">
                     <h4>Definition: Closed and Exact Forms</h4>
@@ -703,7 +632,7 @@
                     </p>
                 </div>
 
-                <h3>The Counterexample: Why Domain Topology Matters</h3>
+                <h3 id="counterexample">The Counterexample: Why Domain Topology Matters</h3>
 
                 <p>
                     Consider the domain \(\Omega = \mathbb{R}^2 \setminus \{(0,0)\}\) (the plane with the origin removed). The 1-form
@@ -737,7 +666,7 @@
                     which satisfies \(\nabla \times \mathbf{A} = 0\) everywhere in \(\Omega\), yet \(\mathbf{A}\) is <strong>not</strong> the gradient of any scalar function. This is the precise counterexample to Feynman's claim!
                 </p>
 
-                <h3>The Connection to \(f(z) = \frac{1}{z}\) and Cauchy-Riemann Equations</h3>
+                <h3 id="connection-1z">The Connection to \(f(z) = \frac{1}{z}\) and Cauchy-Riemann Equations</h3>
 
                 <p>
                     Remarkably, the counterexample \(\omega = \frac{-y\,dx + x\,dy}{x^2 + y^2}\) is <strong>exactly</strong> the imaginary part of the complex differential form \(\frac{1}{z}\,dz\)! Let's see this connection explicitly.
@@ -812,7 +741,7 @@
                 </p>
 
                 <p>
-                    <strong>The Cauchy-Riemann equation \(\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\) makes \(d\omega_2 = 0\!</strong>
+                    <strong>The Cauchy-Riemann equation \(\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\) makes \(d\omega_2 = 0\).</strong>
                 </p>
 
                 <p>
@@ -824,7 +753,7 @@
                 </p>
 
                 <p>
-                    <strong>The second Cauchy-Riemann equation \(\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\) makes \(d\omega_1 = 0\!</strong>
+                    <strong>The second Cauchy-Riemann equation \(\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\) makes \(d\omega_1 = 0\).</strong>
                 </p>
 
                 <div class="highlight-box">
@@ -912,11 +841,30 @@
                     These are <strong>three manifestations of the same topological obstruction</strong>—the hole at the origin!
                 </p>
 
+                <h3 id="cauchy-theorem">Why This Matters for Cauchy's Theorem</h3>
 
-
-                <h2>Conclusion</h2>
                 <p>
-                    The study of primitives in complex analysis reveals the deep connection between the analytic properties of functions and the topological properties of their domains. From local existence guaranteed by power series to global existence dictated by geometry, this topic exemplifies the unity of mathematics.
+                    This topological perspective reveals why <strong>Cauchy's Integral Theorem</strong> requires simply connected domains. The theorem states that if \(f\) is holomorphic on a domain \(\Omega\), then \(\oint_\gamma f(z)\,dz = 0\) for any closed curve \(\gamma\) in \(\Omega\).
+                </p>
+
+                <p>
+                    From what we've learned, we can now see the deeper truth: <strong>Cauchy's theorem holds precisely when closed 1-forms are exact</strong>! The integral \(\oint_\gamma f(z)\,dz\) vanishes for all closed curves \(\gamma\) if and only if \(f(z)\,dz\) is an exact 1-form, which happens if and only if \(f\) has a primitive.
+                </p>
+
+                <p>
+                    On simply connected domains (no holes), every holomorphic function has a primitive, so Cauchy's theorem always holds. On domains with holes, holomorphic functions like \(\frac{1}{z}\) may not have primitives, and their integrals around curves enclosing the holes can be non-zero. The value \(2\pi i = \oint_{|z|=1} \frac{dz}{z}\) is a <strong>topological invariant</strong>—it detects the presence of the hole!
+                </p>
+
+                
+            
+                
+
+                <h2 id="conclusion">Conclusion</h2>
+                <p>
+                 Cauchy's Integral Theorem, the Poincaré Lemma, and Feynman's mistaken claim are all connected by the same thread: the relationship between local and global properties in mathematics. Locally, every holomorphic function looks like a derivative (closed = exact), but globally, topology can obstruct this patching process. The "hole" at the origin is not a singularity to be avoided; it's a fundamental feature of the domain that mathematics must respect.
+                </p>
+                <p>
+                    The study of primitives in complex analysis reveals the deep connection between the analytic properties of functions and the topological properties of their domains. 
                 </p>
 
                 <div class="quote" style="text-align: center; font-style: italic; color: #7f8c8d; margin: 3rem 0; font-size: 1.1rem;">
@@ -961,8 +909,14 @@
                     </p>
                 </div>
 
-                
+
         </article>
+
+        <div style="text-align: center; padding: 3rem 2rem; background: #f8f9fa; margin-top: 3rem; border-radius: 8px;">
+            <h3 style="color: #2c3e50; margin-bottom: 1rem;">Explore More Blogs</h3>
+            <p style="color: #7f8c8d; margin-bottom: 1.5rem;">Dive deeper into mathematics, physics, and their fascinating connections.</p>
+            <a href="blogs.html" style="display: inline-block; padding: 0.8rem 2rem; background: #3498db; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s;">View All Blogs →</a>
+        </div>
     </main>
 
     <footer>
