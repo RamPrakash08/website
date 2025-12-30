@@ -294,11 +294,15 @@
                 </p>
 
                 <p>
-                    In classical mechanics, we often study systems that are not free to move in all directions. A pendulum is constrained to swing along a circular arc; a bead slides along a wire; a particle is confined to a surface. These <strong>constrained systems</strong> require special mathematical tools, and the language of level sets and codimension provides the perfect framework for understanding them.
+                    In classical mechanics, we often study constrained systems in which motion is not allowed in all directions, leading to an effective reduction in the dimensionality of the problem. However, it is not mathematically trivial to determine under what conditions a given constraint actually reduces the dimension. This amounts to checking the non redundancy of constraints.
                 </p>
 
                 <p>
-                    This blog explores how level sets describe constraints, what codimension tells us about the geometry of constrained motion, and how these ideas connect to Lagrange multipliers and the geometry of configuration spaces.
+                    In addition to explicit constraints, conservation laws in physical systems also act as constraints, restricting the motion of a particle. For a system governed by a first order ODE with \(n\) degrees of freedom, the presence of \(n-1\) functionally independent conserved quantities is particularly significant, as it confines the motion to a one dimensional trajectory in the configuration space.
+                </p>
+
+                <p>
+                    Therefore, the study of level sets, codimension, and constraints in configuration space is essential for understanding the structure of solution curves and for systematically reducing the dimensionality of the problem. In this blog, using results from differential topology, I intend to explain the nuances that arise in the mathematical formulation of classical mechanics.
                 </p>
 
                 <h2>Level Sets: The Geometry of Constraints</h2>
@@ -313,6 +317,22 @@
 
                 <p>
                     When we impose a constraint \(g(x) = 0\) on a system, we're restricting the configuration to lie on the level set \(L_0\). This is the geometric way of thinking about constraints: they're not equations to be solved, but <strong>surfaces</strong> (more generally, manifolds) on which the system must live.
+                </p>
+
+                <p>
+                    In an \(n\)-dimensional configuration space \(\mathbb{R}^n\), we often have multiple constraints. Suppose we have \(k\) constraint functions \(g_1, g_2, \ldots, g_k\), where each \(g_i : \mathbb{R}^n \to \mathbb{R}\) is a smooth function. We can combine these into a single map:
+                </p>
+
+                <p>
+                    $$g : \mathbb{R}^n \to \mathbb{R}^k, \quad g(x) = \begin{pmatrix} g_1(x) \\ g_2(x) \\ \vdots \\ g_k(x) \end{pmatrix}$$
+                </p>
+
+                <p>
+                    The constraint \(g(x) = 0\) (where \(0\) is the origin in \(\mathbb{R}^k\)) means \(g_1(x) = 0, g_2(x) = 0, \ldots, g_k(x) = 0\). Geometrically, the configuration is restricted to the intersection of the \(k\) level sets \(L_{g_i} = \{x \in \mathbb{R}^n : g_i(x) = 0\}\).
+                </p>
+
+                <p>
+                    This viewpoint is powerful because it allows us to use tools from linear algebra and differential topology. For instance, the Jacobian matrix \(Dg(x)\) — whose rows are the gradients \(\nabla g_1(x), \ldots, \nabla g_k(x)\) — encodes all the linearized constraint information at a point. When these gradients are linearly independent, the constraints are said to be <strong>regular</strong> or <strong>functionally independent</strong> at that point.
                 </p>
 
                 <h2>Codimension: Measuring "How Constraining" a Constraint Is</h2>
