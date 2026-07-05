@@ -793,25 +793,120 @@
             <!-- Rating and Feedback Section -->
             <div class="blog-feedback" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e0e0e0; text-align: center;">
                 <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #2c3e50;">Was this post helpful?</h3>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Global rating from readers:</p>
+                <p id="rating-prompt-text" style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Global rating: Loading...</p>
                 
-                <!-- Lyket Rating Widget -->
-                <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
-                    <div 
-                        data-lyket-type="rate" 
-                        data-lyket-id="blog-noether-theorem" 
-                        data-lyket-namespace="4plus1d-blogs"
-                        data-lyket-color-text="#2c3e50"
-                    ></div>
+                <div class="stars-container" style="display: inline-flex; gap: 0.5rem; font-size: 2rem; color: #ccc; cursor: pointer; user-select: none; margin-bottom: 0.5rem;">
+                    <span class="star-rating" data-value="1" style="transition: color 0.2s;">★</span>
+                    <span class="star-rating" data-value="2" style="transition: color 0.2s;">★</span>
+                    <span class="star-rating" data-value="3" style="transition: color 0.2s;">★</span>
+                    <span class="star-rating" data-value="4" style="transition: color 0.2s;">★</span>
+                    <span class="star-rating" data-value="5" style="transition: color 0.2s;">★</span>
                 </div>
+                
+                <p id="rating-feedback-msg" style="color: #27ae60; font-weight: bold; margin-top: 0.25rem; height: 1.5rem; transition: opacity 0.3s; opacity: 0;"></p>
                 
                 <p style="margin-top: 1.5rem; font-size: 0.95rem; color: #555;">
                     Have questions or suggestions? Reach out directly at 
                     <a href="mailto:rprakasht0804@gmail.com" style="color: #3498db; text-decoration: none; font-weight: bold;">rprakasht0804@gmail.com</a>
                 </p>
             </div>
-            
-            <script src="https://unpkg.com/@lyket/widget@latest/dist/lyket.js?apiKey=pt_f723b7b25e791e84a441e8f237bf3c"></script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const stars = document.querySelectorAll('.star-rating');
+                    const feedbackMsg = document.getElementById('rating-feedback-msg');
+                    const promptText = document.getElementById('rating-prompt-text');
+                    const postPath = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+                    
+                    const dbUrl = `https://kvdb.io/8x4wL1eR2y9T7vNq8x5/rating_${postPath}`;
+                    let currentData = { sum: 0, count: 0 };
+                    
+                    // Fetch existing ratings
+                    fetch(dbUrl)
+                        .then(res => {
+                            if (res.status === 200) return res.json();
+                            return { sum: 0, count: 0 };
+                        })
+                        .then(data => {
+                            currentData = data;
+                            updatePromptText();
+                        })
+                        .catch(() => {
+                            updatePromptText();
+                        });
+                        
+                    // Retrieve user's own rating
+                    const savedRating = localStorage.getItem('rating_' + postPath);
+                    if (savedRating) {
+                        highlightStars(savedRating);
+                        feedbackMsg.textContent = `You rated this post ${savedRating} stars. Thank you!`;
+                        feedbackMsg.style.opacity = 1;
+                        disableStars();
+                    }
+                    
+                    stars.forEach(star => {
+                        star.addEventListener('mouseover', () => {
+                            if (localStorage.getItem('rating_' + postPath)) return;
+                            highlightStars(star.getAttribute('data-value'));
+                        });
+                        
+                        star.addEventListener('mouseout', () => {
+                            if (localStorage.getItem('rating_' + postPath)) return;
+                            highlightStars(0);
+                        });
+                        
+                        star.addEventListener('click', () => {
+                            if (localStorage.getItem('rating_' + postPath)) return;
+                            const ratingValue = parseInt(star.getAttribute('data-value'), 10);
+                            
+                            // Save locally
+                            localStorage.setItem('rating_' + postPath, ratingValue);
+                            highlightStars(ratingValue);
+                            disableStars();
+                            
+                            // Update data
+                            currentData.sum += ratingValue;
+                            currentData.count += 1;
+                            updatePromptText();
+                            
+                            feedbackMsg.textContent = `Thank you for rating this post ${ratingValue} stars!`;
+                            feedbackMsg.style.opacity = 1;
+                            
+                            // Send to database
+                            fetch(dbUrl, {
+                                method: 'POST',
+                                body: JSON.stringify(currentData)
+                            }).catch(err => console.log('Rating storage deferred.'));
+                        });
+                    });
+                    
+                    function highlightStars(rating) {
+                        stars.forEach(star => {
+                            const val = star.getAttribute('data-value');
+                            if (val <= rating) {
+                                star.style.color = '#f1c40f'; // Gold
+                            } else {
+                                star.style.color = '#ccc';
+                            }
+                        });
+                    }
+                    
+                    function disableStars() {
+                        stars.forEach(star => {
+                            star.style.cursor = 'default';
+                        });
+                    }
+                    
+                    function updatePromptText() {
+                        if (currentData.count > 0) {
+                            const avg = (currentData.sum / currentData.count).toFixed(1);
+                            promptText.textContent = `Global rating: ★ ${avg} / 5 (${currentData.count} ratings)`;
+                        } else {
+                            promptText.textContent = `Global rating: No ratings yet. Be the first to rate!`;
+                        }
+                    }
+                });
+            </script>
         </article>
     </main>
 
