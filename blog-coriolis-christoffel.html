@@ -248,13 +248,10 @@
                                 <stop offset="50%" style="stop-color:#0c0d29;stop-opacity:1" />
                                 <stop offset="100%" style="stop-color:#05051a;stop-opacity:1" />
                             </linearGradient>
-                            <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="#66fcf1"/>
-                            </marker>
-                            <marker id="red-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <marker id="red-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                                 <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
                             </marker>
-                            <marker id="purple-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <marker id="purple-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                                 <polygon points="0 0, 10 3.5, 0 7" fill="#9b59b6"/>
                             </marker>
                         </defs>
@@ -273,28 +270,34 @@
                         </g>
 
                         <!-- Particle Trajectory Path -->
-                        <path d="M 220,290 C 260,200 360,110 500,105" fill="none" stroke="#66fcf1" stroke-width="3" opacity="0.8"/>
+                        <path d="M 200,280 C 240,160 430,70 600,120" fill="none" stroke="#66fcf1" stroke-width="3" opacity="0.8"/>
                         
-                        <!-- Particle Spot -->
-                        <circle cx="360" cy="155" r="5" fill="#e74c3c"/>
-                        
-                        <!-- Radial line to particle -->
-                        <line x1="400" y1="175" x2="360" y2="155" stroke="#3498db" stroke-width="1.5" stroke-dasharray="4,4"/>
-                        
-                        <!-- Vectors at Particle -->
-                        <!-- e_r basis vector (outward radial) -->
-                        <line x1="360" y1="155" x2="330" y2="140" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow)"/>
-                        <!-- e_theta basis vector (perpendicular) -->
-                        <line x1="360" y1="155" x2="375" y2="125" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow)"/>
+                        <!-- Trajectory Point 1 -->
+                        <circle cx="250" cy="200" r="5" fill="#66fcf1"/>
+                        <line x1="250" y1="200" x2="215" y2="206" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow-hero)"/>
+                        <line x1="250" y1="200" x2="244" y2="165" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow-hero)"/>
+                        <text x="200" y="218" font-family="Georgia, serif" font-size="10" fill="#e74c3c" font-weight="bold">ê_r</text>
+                        <text x="240" y="153" font-family="Georgia, serif" font-size="10" fill="#9b59b6" font-weight="bold">ê_θ</text>
+
+                        <!-- Trajectory Point 2 -->
+                        <circle cx="400" cy="105" r="5" fill="#66fcf1"/>
+                        <line x1="400" y1="105" x2="400" y2="70" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow-hero)"/>
+                        <line x1="400" y1="105" x2="365" y2="105" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow-hero)"/>
+                        <text x="405" y="65" font-family="Georgia, serif" font-size="10" fill="#e74c3c" font-weight="bold">ê_r</text>
+                        <text x="350" y="101" font-family="Georgia, serif" font-size="10" fill="#9b59b6" font-weight="bold">ê_θ</text>
+
+                        <!-- Trajectory Point 3 -->
+                        <circle cx="550" cy="145" r="5" fill="#66fcf1"/>
+                        <line x1="550" y1="145" x2="585" y2="138" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow-hero)"/>
+                        <line x1="550" y1="145" x2="543" y2="110" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow-hero)"/>
+                        <text x="590" y="133" font-family="Georgia, serif" font-size="10" fill="#e74c3c" font-weight="bold">ê_r</text>
+                        <text x="532" y="103" font-family="Georgia, serif" font-size="10" fill="#9b59b6" font-weight="bold">ê_θ</text>
                         
                         <!-- Math equations floating -->
-                        <text x="50" y="70" font-family="Georgia, serif" font-size="14" fill="#a0aec0" opacity="0.75">\(\ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -g^{\gamma\mu}\nabla_\mu V\)</text>
-                        <text x="480" y="290" font-family="Georgia, serif" font-size="14" fill="#a0aec0" opacity="0.75">\(\nabla_{c'(t)} c'(t) = -g^{\gamma\mu}\partial_\mu V\)</text>
+                        <text x="50" y="70" font-family="Georgia, serif" font-size="13" fill="#a0aec0" opacity="0.75">\(\ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -g^{\gamma\mu}\nabla_\mu V\)</text>
+                        <text x="500" y="290" font-family="Georgia, serif" font-size="13" fill="#a0aec0" opacity="0.75">\(\nabla_{c'(t)} c'(t) = -\frac{1}{m}\partial^\gamma V\)</text>
                         
-                        <!-- Text Labels -->
-                        <text x="310" y="130" font-family="Georgia, serif" font-size="11" fill="#e74c3c" font-weight="bold">ê_r</text>
-                        <text x="375" y="120" font-family="Georgia, serif" font-size="11" fill="#9b59b6" font-weight="bold">ê_θ</text>
-                        <text x="400" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" font-weight="bold">Inertial Forces via Metric Connections</text>
+                        <text x="400" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" font-weight="bold">Basis Vector Rotation along Trajectory</text>
                     </svg>
                 </div>
                 <div class="image-caption">Figure 0: Geometric visualization of moving frame coordinate bases.</div>
