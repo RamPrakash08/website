@@ -205,7 +205,58 @@
         <div class="blog-grid">
             <a href="blog-coriolis-christoffel.html" style="text-decoration: none; color: inherit;">
                 <div class="blog-card">
-                    <img src="fictitious_forces_display.svg" alt="Basis Vector Rotation along Trajectory" class="blog-image">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #05051a 0%, #0c0d29 50%, #05051a 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <defs>
+                                <linearGradient id="gridGradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#05051a;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#0c0d29;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#05051a;stop-opacity:1" />
+                                </linearGradient>
+                                <marker id="red-arrow-blog" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#ff5555"/>
+                                </marker>
+                                <marker id="cyan-arrow-blog" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#66fcf1"/>
+                                </marker>
+                                <marker id="orange-arrow-blog" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#f39c12"/>
+                                </marker>
+                            </defs>
+                            
+                            <!-- Concentric Polar Grid -->
+                            <g stroke="#3498db" stroke-width="1" opacity="0.15">
+                                <circle cx="300" cy="200" r="50"/>
+                                <circle cx="300" cy="200" r="100"/>
+                                <circle cx="300" cy="200" r="150"/>
+                                <line x1="100" y1="200" x2="500" y2="200"/>
+                                <line x1="300" y1="0" x2="300" y2="400"/>
+                                <line x1="158" y1="58" x2="442" y2="342"/>
+                                <line x1="158" y1="342" x2="442" y2="58"/>
+                            </g>
+
+                            <!-- Circular Path of Particle -->
+                            <circle cx="300" cy="200" r="100" fill="none" stroke="#66fcf1" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+                            
+                            <!-- Rotation indicator -->
+                            <path d="M 335,165 A 50 50 0 0 1 350,200" fill="none" stroke="#f39c12" stroke-width="2" marker-end="url(#orange-arrow-blog)"/>
+                            <text x="358" y="180" font-family="Georgia, serif" font-size="12" fill="#f39c12" font-style="italic">ω</text>
+
+                            <!-- Particle -->
+                            <circle cx="371" cy="129" r="6" fill="#ff79c6"/>
+                            
+                            <!-- Centrifugal Force (radial outward) -->
+                            <line x1="371" y1="129" x2="413" y2="87" stroke="#ff5555" stroke-width="2.5" marker-end="url(#red-arrow-blog)"/>
+                            <text x="420" y="80" font-family="Georgia, serif" font-size="11" fill="#ff5555" font-weight="bold">F_cf</text>
+                            
+                            <!-- Coriolis Force (deflecting tangent) -->
+                            <line x1="371" y1="129" x2="329" y2="87" stroke="#66fcf1" stroke-width="2.5" marker-end="url(#cyan-arrow-blog)"/>
+                            <text x="290" y="80" font-family="Georgia, serif" font-size="11" fill="#66fcf1" font-weight="bold">F_cor</text>
+
+                            <!-- Label -->
+                            <text x="300" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#ffffff" opacity="0.9">Centrifugal &amp; Coriolis Forces</text>
+                        </svg>
+                    </div>
                     <div class="blog-content">
                         <div class="blog-title">Geometric Origin of Fictitious Forces via Christoffel Symbols</div>
                         <div class="blog-excerpt">Exploring how centrifugal and Coriolis forces arise naturally as connection terms (Christoffel symbols) of curved, coordinate-dependent reference frames in flat spacetime.</div>

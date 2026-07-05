@@ -240,7 +240,65 @@
 
             <div class="blog-content">
                 <!-- Hero SVG -->
-                <img src="fictitious_forces_display.svg" alt="Basis Vector Rotation along Trajectory" class="blog-featured-image" style="object-fit: cover;">
+                <div class="blog-featured-image">
+                    <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="heroBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#05051a;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#0c0d29;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#05051a;stop-opacity:1" />
+                            </linearGradient>
+                            <marker id="red-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#ff5555"/>
+                            </marker>
+                            <marker id="cyan-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#66fcf1"/>
+                            </marker>
+                            <marker id="orange-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#f39c12"/>
+                            </marker>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#heroBgGrad)"/>
+                        
+                        <!-- Concentric Polar Grid -->
+                        <g stroke="#3498db" stroke-width="1" opacity="0.15">
+                            <circle cx="400" cy="175" r="50"/>
+                            <circle cx="400" cy="175" r="100"/>
+                            <circle cx="400" cy="175" r="150"/>
+                            <circle cx="400" cy="175" r="200"/>
+                            <circle cx="400" cy="175" r="250"/>
+                            <line x1="150" y1="175" x2="650" y2="175"/>
+                            <line x1="400" y1="0" x2="400" y2="350"/>
+                            <line x1="258" y1="33" x2="542" y2="317"/>
+                            <line x1="258" y1="317" x2="542" y2="33"/>
+                        </g>
+
+                        <!-- Circular Path of Particle -->
+                        <circle cx="400" cy="175" r="110" fill="none" stroke="#66fcf1" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.6"/>
+                        
+                        <!-- Rotation indicator -->
+                        <path d="M 442,133 A 60 60 0 0 1 460,175" fill="none" stroke="#f39c12" stroke-width="2" marker-end="url(#orange-arrow-hero)"/>
+                        <text x="470" y="150" font-family="Georgia, serif" font-size="14" fill="#f39c12" font-style="italic">ω</text>
+
+                        <!-- Particle -->
+                        <circle cx="478" cy="97" r="7" fill="#ff79c6"/>
+                        
+                        <!-- Centrifugal Force (radial outward) -->
+                        <line x1="478" y1="97" x2="528" y2="47" stroke="#ff5555" stroke-width="2.5" marker-end="url(#red-arrow-hero)"/>
+                        <text x="535" y="42" font-family="Georgia, serif" font-size="12" fill="#ff5555" font-weight="bold">Centrifugal Force</text>
+                        
+                        <!-- Coriolis Force (deflecting tangent) -->
+                        <line x1="478" y1="97" x2="428" y2="47" stroke="#66fcf1" stroke-width="2.5" marker-end="url(#cyan-arrow-hero)"/>
+                        <text x="330" y="42" font-family="Georgia, serif" font-size="12" fill="#66fcf1" font-weight="bold">Coriolis Force</text>
+
+                        <!-- Floating Math Equation -->
+                        <text x="50" y="70" font-family="Georgia, serif" font-size="13" fill="#a0aec0" opacity="0.75">\(\ddot{r} - r\dot{\theta}^2 = -\frac{1}{m}\frac{\partial V}{\partial r}\)</text>
+                        <text x="530" y="290" font-family="Georgia, serif" font-size="13" fill="#a0aec0" opacity="0.75">\(r\ddot{\theta} + 2\dot{r}\dot{\theta} = 0\)</text>
+
+                        <!-- Label -->
+                        <text x="400" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" opacity="0.9">Centrifugal &amp; Coriolis Forces in Curved Coordinates</text>
+                    </svg>
+                </div>
                 <div class="image-caption">Figure 0: Geometric visualization of moving frame coordinate bases.</div>
 
                 <p>In classical dynamics, observers in rotating or accelerating reference frames experience "fictitious forces" like the centrifugal and Coriolis forces. In Cartesian coords, Newton's second law is clean and straightforward. However, as soon as we transform to curvilinear coordinate grids (like polar coordinates) or transition to accelerating observers, correction terms arise.</p>
