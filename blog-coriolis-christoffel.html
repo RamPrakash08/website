@@ -300,10 +300,10 @@
                     </svg>
                 </div>
                 <div class="image-caption">Figure 0: Geometric visualization of moving frame coordinate bases.</div>
-
+                <p>One often doesn't realize the importance of differential geometry while dealing with classical mechanics. In this blog I want to point out tensorial way of expressing Newton's Second law, and emphasize on importance of including Christoffel symbols while defining acceleration to deal with change of basis frames in curved space. </p>
                 <p>In classical dynamics, observers in rotating or accelerating reference frames experience "fictitious forces" like the centrifugal and Coriolis forces. In Cartesian coords, Newton's second law is clean and straightforward. However, as soon as we transform to curvilinear coordinate grids (like polar coordinates) or transition to accelerating observers, correction terms arise.</p>
                 
-                <p>When viewed through the lens of differential geometry, these fictitious forces are revealed to be non-fictitious, purely geometric phenomena. They correspond to the coordinate-dependent components of the metric connection, mathematically encoded in the <strong>Christoffel symbols</strong>. Below, we derive these forces from first principles using the Lagrangian formulation of a classical particle in a potential field.</p>
+                <p>When viewed through the lens of differential geometry, these fictitious forces are purely geometric phenomena. They correspond to the coordinate-dependent components of the metric connection, mathematically encoded in the <strong>Christoffel symbols</strong>. Below, we derive these forces from first principles using the Lagrangian formulation of a classical particle in a potential field.</p>
 
                 <h2>1. Lagrangian of a Classical Particle</h2>
                 
@@ -377,7 +377,7 @@
                     \[ \ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} g^{\gamma\mu} \partial_\mu V = -\frac{1}{m} \partial^\gamma V \]
                 </div>
 
-                <p>Note that this action is not invariant under general time reparameterization because \(t\) is chosen as the Newtonian time. However, writing the equation of motion in terms of the covariant derivative along the curve \(c(t)\) yields a remarkably elegant, geometric statement:</p>
+                <p>Note that this action is not invariant under general time reparameterization, the parameter \(t\) is chosen as the Newtonian time. However, writing the equation of motion in terms of the covariant derivative along the curve \(c(t)\) yields a remarkably elegant, geometric statement:</p>
 
                 <div class="equation-box">
                     \[ \nabla_{c'(t)} c'(t) = -\frac{1}{m} g^{\gamma\mu} \partial_\mu V \]
