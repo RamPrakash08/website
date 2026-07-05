@@ -203,6 +203,55 @@
         <p class="subtitle">Exploring mathematical concepts, one post at a time</p>
 
         <div class="blog-grid">
+            <a href="blog-coriolis-christoffel.html" style="text-decoration: none; color: inherit;">
+                <div class="blog-card">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #05051a 0%, #0c0d29 50%, #05051a 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <defs>
+                                <linearGradient id="gridGradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#05051a;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#0c0d29;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#05051a;stop-opacity:1" />
+                                </linearGradient>
+                                <marker id="arrowCard" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#66fcf1"/>
+                                </marker>
+                            </defs>
+                            
+                            <!-- Concentric Polar Grid -->
+                            <g stroke="#3498db" stroke-width="1" opacity="0.2">
+                                <circle cx="300" cy="200" r="50"/>
+                                <circle cx="300" cy="200" r="100"/>
+                                <circle cx="300" cy="200" r="150"/>
+                                <line x1="100" y1="200" x2="500" y2="200"/>
+                                <line x1="300" y1="50" x2="300" y2="350"/>
+                                <line x1="158" y1="58" x2="442" y2="342"/>
+                                <line x1="158" y1="342" x2="442" y2="58"/>
+                            </g>
+
+                            <!-- Trajectory curve -->
+                            <path d="M 180,280 Q 280,140 420,130" fill="none" stroke="#66fcf1" stroke-width="3" opacity="0.8"/>
+                            <circle cx="280" cy="180" r="5" fill="#e74c3c"/>
+                            
+                            <!-- Vectors -->
+                            <line x1="280" y1="180" x2="250" y2="165" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowCard)"/>
+                            <line x1="280" y1="180" x2="265" y2="210" stroke="#9b59b6" stroke-width="2" marker-end="url(#arrowCard)"/>
+                            
+                            <!-- Label -->
+                            <text x="300" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#ffffff" opacity="0.9">Metric Connection &amp; Fictitious Forces</text>
+                        </svg>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-title">Geometric Origin of Fictitious Forces via Christoffel Symbols</div>
+                        <div class="blog-excerpt">Exploring how centrifugal and Coriolis forces arise naturally as connection terms (Christoffel symbols) of curved, coordinate-dependent reference frames in flat spacetime.</div>
+                        <div class="blog-meta">
+                            <span class="blog-date">July 2026</span>
+                            <span class="blog-tag">Mathematical Physics</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
             <a href="blog-clock-hypothesis.html" style="text-decoration: none; color: inherit;">
                 <div class="blog-card">
                     <div class="blog-image" style="background: linear-gradient(135deg, #0b0c10 0%, #1a202c 50%, #0b0c10 100%); display: flex; align-items: center; justify-content: center; overflow: hidden;">
