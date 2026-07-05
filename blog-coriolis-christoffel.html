@@ -244,60 +244,75 @@
                     <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="heroBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#05051a;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#0c0d29;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#05051a;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#0b0d1b;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#1c1d3a;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0b0d1b;stop-opacity:1" />
                             </linearGradient>
+                            <linearGradient id="discGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#282a36;stop-opacity:0.8" />
+                                <stop offset="100%" style="stop-color:#44475a;stop-opacity:0.8" />
+                            </linearGradient>
+                            <radialGradient id="particleGrad" cx="30%" cy="30%" r="70%">
+                                <stop offset="0%" stop-color="#ff9ff3" />
+                                <stop offset="50%" stop-color="#ff4757" />
+                                <stop offset="100%" stop-color="#ff2e44" />
+                            </radialGradient>
+                            <filter id="glowHero" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="5" result="blur"/>
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
                             <marker id="red-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#ff4757"/>
                             </marker>
-                            <marker id="purple-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="#9b59b6"/>
+                            <marker id="cyan-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#54a0ff"/>
+                            </marker>
+                            <marker id="green-arrow-hero" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#2ed573"/>
                             </marker>
                         </defs>
                         <rect width="100%" height="100%" fill="url(#heroBgGrad)"/>
                         
-                        <!-- Concentric Polar Grid Lines -->
-                        <g stroke="#3498db" stroke-width="1" opacity="0.15">
-                            <circle cx="400" cy="175" r="50"/>
-                            <circle cx="400" cy="175" r="100"/>
-                            <circle cx="400" cy="175" r="150"/>
-                            <circle cx="400" cy="175" r="200"/>
-                            <line x1="200" y1="175" x2="600" y2="175"/>
-                            <line x1="400" y1="0" x2="400" y2="350"/>
-                            <line x1="258" y1="33" x2="542" y2="317"/>
-                            <line x1="258" y1="317" x2="542" y2="33"/>
+                        <!-- Spinning Disc -->
+                        <ellipse cx="400" cy="185" rx="280" ry="120" fill="url(#discGrad)" stroke="#341f97" stroke-width="4"/>
+                        
+                        <!-- Groves on Disc -->
+                        <ellipse cx="400" cy="185" rx="210" ry="90" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="5,5"/>
+                        <ellipse cx="400" cy="185" rx="140" ry="60" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="5,5"/>
+                        <ellipse cx="400" cy="185" rx="70" ry="30" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+                        <!-- Center pin -->
+                        <ellipse cx="400" cy="185" rx="10" ry="5" fill="#57606f"/>
+                        <path d="M 396,185 L 396,165 A 4,2 0 0 1 404,165 L 404,185 Z" fill="#ff9f43"/>
+                        
+                        <!-- Spin direction arrow -->
+                        <path d="M 630,220 A 280 120 0 0 1 260,285" fill="none" stroke="#2ed573" stroke-width="4" stroke-linecap="round" marker-end="url(#green-arrow-hero)" filter="url(#glowHero)"/>
+                        <text x="450" y="295" font-family="'Georgia', serif" font-size="14" fill="#2ed573" font-style="italic" font-weight="bold">Spin!</text>
+
+                        <!-- Trajectory spiral dotted path -->
+                        <path d="M 400,185 Q 440,175 450,140 T 510,150" fill="none" stroke="#ff9ff3" stroke-width="2.5" stroke-dasharray="6,4" opacity="0.6"/>
+                        
+                        <!-- Cute Particle -->
+                        <g filter="url(#glowHero)">
+                            <circle cx="510" cy="150" r="18" fill="url(#particleGrad)"/>
+                            <!-- Smiling Face -->
+                            <circle cx="503" cy="145" r="2.5" fill="white"/>
+                            <circle cx="517" cy="145" r="2.5" fill="white"/>
+                            <path d="M 503,152 Q 510,158 517,152" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
                         </g>
 
-                        <!-- Particle Trajectory Path -->
-                        <path d="M 200,280 C 240,160 430,70 600,120" fill="none" stroke="#66fcf1" stroke-width="3" opacity="0.8"/>
+                        <!-- Centrifugal Force Arrow -->
+                        <line x1="510" y1="150" x2="575" y2="130" stroke="#ff4757" stroke-width="3" marker-end="url(#red-arrow-hero)"/>
+                        <text x="580" y="125" font-family="'Georgia', serif" font-size="13" fill="#ff4757" font-weight="bold">Centrifugal Force</text>
                         
-                        <!-- Trajectory Point 1 -->
-                        <circle cx="250" cy="200" r="5" fill="#66fcf1"/>
-                        <line x1="250" y1="200" x2="215" y2="206" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow-hero)"/>
-                        <line x1="250" y1="200" x2="244" y2="165" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow-hero)"/>
-                        <text x="200" y="218" font-family="Georgia, serif" font-size="10" fill="#e74c3c" font-weight="bold">ê_r</text>
-                        <text x="240" y="153" font-family="Georgia, serif" font-size="10" fill="#9b59b6" font-weight="bold">ê_θ</text>
+                        <!-- Coriolis Force Arrow -->
+                        <line x1="510" y1="150" x2="493" y2="93" stroke="#54a0ff" stroke-width="3" marker-end="url(#cyan-arrow-hero)"/>
+                        <text x="440" y="80" font-family="'Georgia', serif" font-size="13" fill="#54a0ff" font-weight="bold">Coriolis Drift</text>
 
-                        <!-- Trajectory Point 2 -->
-                        <circle cx="400" cy="105" r="5" fill="#66fcf1"/>
-                        <line x1="400" y1="105" x2="400" y2="70" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow-hero)"/>
-                        <line x1="400" y1="105" x2="365" y2="105" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow-hero)"/>
-                        <text x="405" y="65" font-family="Georgia, serif" font-size="10" fill="#e74c3c" font-weight="bold">ê_r</text>
-                        <text x="350" y="101" font-family="Georgia, serif" font-size="10" fill="#9b59b6" font-weight="bold">ê_θ</text>
-
-                        <!-- Trajectory Point 3 -->
-                        <circle cx="550" cy="145" r="5" fill="#66fcf1"/>
-                        <line x1="550" y1="145" x2="585" y2="138" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow-hero)"/>
-                        <line x1="550" y1="145" x2="543" y2="110" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow-hero)"/>
-                        <text x="590" y="133" font-family="Georgia, serif" font-size="10" fill="#e74c3c" font-weight="bold">ê_r</text>
-                        <text x="532" y="103" font-family="Georgia, serif" font-size="10" fill="#9b59b6" font-weight="bold">ê_θ</text>
-                        
-                        <!-- Math equations floating -->
-                        <text x="50" y="70" font-family="Georgia, serif" font-size="13" fill="#a0aec0" opacity="0.75">\(\ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -g^{\gamma\mu}\nabla_\mu V\)</text>
-                        <text x="500" y="290" font-family="Georgia, serif" font-size="13" fill="#a0aec0" opacity="0.75">\(\nabla_{c'(t)} c'(t) = -\frac{1}{m}\partial^\gamma V\)</text>
-                        
-                        <text x="400" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" font-weight="bold">Basis Vector Rotation along Trajectory</text>
+                        <text x="400" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#ffffff" font-weight="bold" letter-spacing="1">Fun Physics: Spinning Turntables</text>
                     </svg>
                 </div>
                 <div class="image-caption">Figure 0: Geometric visualization of moving frame coordinate bases.</div>
