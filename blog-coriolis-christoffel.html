@@ -285,7 +285,7 @@
                         <!-- e_r basis vector (outward radial) -->
                         <line x1="360" y1="155" x2="330" y2="140" stroke="#e74c3c" stroke-width="2" marker-end="url(#red-arrow)"/>
                         <!-- e_theta basis vector (perpendicular) -->
-                        <line x1="360" y1="155" x2="345" y2="185" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow)"/>
+                        <line x1="360" y1="155" x2="375" y2="125" stroke="#9b59b6" stroke-width="2" marker-end="url(#purple-arrow)"/>
                         
                         <!-- Math equations floating -->
                         <text x="50" y="70" font-family="Georgia, serif" font-size="14" fill="#a0aec0" opacity="0.75">\(\ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -g^{\gamma\mu}\nabla_\mu V\)</text>
@@ -293,7 +293,7 @@
                         
                         <!-- Text Labels -->
                         <text x="310" y="130" font-family="Georgia, serif" font-size="11" fill="#e74c3c" font-weight="bold">ê_r</text>
-                        <text x="330" y="200" font-family="Georgia, serif" font-size="11" fill="#9b59b6" font-weight="bold">ê_θ</text>
+                        <text x="375" y="120" font-family="Georgia, serif" font-size="11" fill="#9b59b6" font-weight="bold">ê_θ</text>
                         <text x="400" y="325" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#ffffff" font-weight="bold">Inertial Forces via Metric Connections</text>
                     </svg>
                 </div>
@@ -320,43 +320,43 @@
                 <p>Here, the coordinate derivatives are with respect to the time parameter \(t\) (i.e., \(\dot{x}^\mu = \frac{dx^\mu}{dt}\)). According to the Euler-Lagrange equations of motion:</p>
 
                 <div class="equation-box">
-                    \[ \frac{d}{dt} \left( \frac{\part L}{\part \dot{x}^\mu} \right) = \frac{\part L}{\part x^\mu} \]
+                    \[ \frac{d}{dt} \left( \frac{\partial L}{\partial \dot{x}^\mu} \right) = \frac{\partial L}{\partial x^\mu} \]
                 </div>
 
                 <p>Let's evaluate each term carefully. First, the momentum conjugate to \(x^\mu\) is:</p>
                 
                 <div class="equation-box">
-                    \[ \frac{\part L}{\part \dot{x}^\mu} = m g_{\mu\nu} \dot{x}^\nu \]
+                    \[ \frac{\partial L}{\partial \dot{x}^\mu} = m g_{\mu\nu} \dot{x}^\nu \]
                 </div>
 
                 <p>Taking its total time derivative:</p>
 
                 <div class="equation-box">
-                    \[ \frac{d}{dt} \left( m g_{\mu\nu} \dot{x}^\nu \right) = m g_{\mu\nu} \ddot{x}^\nu + m \left( \part_\alpha g_{\mu\nu} \right) \dot{x}^\alpha \dot{x}^\nu \]
+                    \[ \frac{d}{dt} \left( m g_{\mu\nu} \dot{x}^\nu \right) = m g_{\mu\nu} \ddot{x}^\nu + m \left( \partial_\alpha g_{\mu\nu} \right) \dot{x}^\alpha \dot{x}^\nu \]
                 </div>
 
                 <p>Next, the right-hand side of the Euler-Lagrange equation yields:</p>
 
                 <div class="equation-box">
-                    \[ \frac{\part L}{\part x^\mu} = \frac{m}{2} \left( \part_\mu g_{\alpha\nu} \right) \dot{x}^\alpha \dot{x}^\nu - \part_\mu V \]
+                    \[ \frac{\partial L}{\partial x^\mu} = \frac{m}{2} \left( \partial_\mu g_{\alpha\nu} \right) \dot{x}^\alpha \dot{x}^\nu - \partial_\mu V \]
                 </div>
 
                 <p>Equating the two parts, we get:</p>
 
                 <div class="equation-box">
-                    \[ m g_{\mu\nu} \ddot{x}^\nu + m g_{\mu\nu,\alpha} \dot{x}^\alpha \dot{x}^\nu - \frac{m}{2} g_{\alpha\nu,\mu} \dot{x}^\alpha \dot{x}^\nu = - \part_\mu V \]
+                    \[ m g_{\mu\nu} \ddot{x}^\nu + m g_{\mu\nu,\alpha} \dot{x}^\alpha \dot{x}^\nu - \frac{m}{2} g_{\alpha\nu,\mu} \dot{x}^\alpha \dot{x}^\nu = - \partial_\mu V \]
                 </div>
 
-                <p>where we write \(g_{\alpha\beta,\mu} = \part_\mu g_{\alpha\beta}\) for the partial derivatives of the metric. Symmetrizing the second term (since it is contracted with symmetric velocity components \(\dot{x}^\alpha \dot{x}^\nu\)), we rearrange this into:</p>
+                <p>where we write \(g_{\alpha\beta,\mu} = \partial_\mu g_{\alpha\beta}\) for the partial derivatives of the metric. Symmetrizing the second term (since it is contracted with symmetric velocity components \(\dot{x}^\alpha \dot{x}^\nu\)), we rearrange this into:</p>
 
                 <div class="equation-box">
-                    \[ g_{\mu\nu} \ddot{x}^\nu + \frac{1}{2} \left[ g_{\mu\nu,\alpha} + g_{\mu\alpha,\nu} - g_{\alpha\nu,\mu} \right] \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} \part_\mu V \]
+                    \[ g_{\mu\nu} \ddot{x}^\nu + \frac{1}{2} \left[ g_{\mu\nu,\alpha} + g_{\mu\alpha,\nu} - g_{\alpha\nu,\mu} \right] \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} \partial_\mu V \]
                 </div>
 
                 <p>Multiplying both sides by the inverse metric \(g^{\gamma\mu}\), we isolate the coordinate acceleration \(\ddot{x}^\gamma\):</p>
 
                 <div class="equation-box">
-                    \[ \ddot{x}^\gamma + g^{\gamma\mu} \frac{1}{2} \left[ g_{\mu\nu,\alpha} + g_{\mu\alpha,\nu} - g_{\alpha\nu,\mu} \right] \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} g^{\gamma\mu} \part_\mu V \]
+                    \[ \ddot{x}^\gamma + g^{\gamma\mu} \frac{1}{2} \left[ g_{\mu\nu,\alpha} + g_{\mu\alpha,\nu} - g_{\alpha\nu,\mu} \right] \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} g^{\gamma\mu} \partial_\mu V \]
                 </div>
 
                 <p>The term in brackets multiplied by the inverse metric is exactly the definition of the <strong>Christoffel symbol of the second kind</strong> \(\Gamma^\gamma_{\alpha\nu}\):</p>
@@ -372,13 +372,13 @@
                 <p>Using our definition of the Christoffel symbols, the equation of motion simplifies to:</p>
 
                 <div class="equation-box">
-                    \[ \ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} g^{\gamma\mu} \part_\mu V = -\frac{1}{m} \part^\gamma V \]
+                    \[ \ddot{x}^\gamma + \Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu = -\frac{1}{m} g^{\gamma\mu} \partial_\mu V = -\frac{1}{m} \partial^\gamma V \]
                 </div>
 
                 <p>Note that this action is not invariant under general time reparameterization because \(t\) is chosen as the Newtonian time. However, writing the equation of motion in terms of the covariant derivative along the curve \(c(t)\) yields a remarkably elegant, geometric statement:</p>
 
                 <div class="equation-box">
-                    \[ \nabla_{c'(t)} c'(t) = -\frac{1}{m} g^{\gamma\mu} \part_\mu V \]
+                    \[ \nabla_{c'(t)} c'(t) = -\frac{1}{m} g^{\gamma\mu} \partial_\mu V \]
                 </div>
 
                 <p>This tells us that the covariant derivative of velocity (which is the true coordinate-free geometric acceleration) is driven by the potential gradient. The actual coordinate acceleration \(\ddot{x}^\gamma\) is not equal to the true acceleration. Instead, the true acceleration is the coordinate acceleration <em>plus</em> the geometric connection term \(\Gamma^\gamma_{\alpha\nu} \dot{x}^\alpha \dot{x}^\nu\). When no potential is present (\(V = 0\)), this equation reduces to the geodesic equation:</p>
@@ -448,7 +448,7 @@
                     </li>
                 </ul>
 
-                <p>Let's introduce the potential terms back into the equations: \(F_r = -\part_r V\) and \(F_\theta = -\part_\theta V\). Multiplying the radial equation by mass \(m\), and the angular equation by \(mr^2\), we obtain:</p>
+                <p>Let's introduce the potential terms back into the equations: \(F_r = -\partial_r V\) and \(F_\theta = -\partial_\theta V\). Multiplying the radial equation by mass \(m\), and the angular equation by \(mr^2\), we obtain:</p>
 
                 <div class="highlight-box">
                     \[ m \ddot{r} = F_r + m r \dot{\theta}^2 \quad \text{(Radial Component)} \]
@@ -495,10 +495,10 @@
                         <line x1="96.4" y1="223.6" x2="121.4" y2="248.4" stroke="#3498db" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
                         <line x1="223.6" y1="223.6" x2="248.6" y2="198.6" stroke="#3498db" stroke-width="1.5" marker-end="url(#blue-arrow)"/>
                         
-                        <text x="185" y="145" font-family="'Georgia', serif" font-size="14" font-weight="bold" fill="#2c3e50">\(\vec{V} = \frac{\part}{\part\theta}\)</text>
+                        <text x="185" y="145" font-family="'Georgia', serif" font-size="14" font-weight="bold" fill="#2c3e50">\(\vec{V} = \frac{\partial}{\partial\theta}\)</text>
                         <text x="185" y="160" font-family="'Georgia', serif" font-size="11" fill="#7f8c8d" font-style="italic">(Circulating)</text>
                         <defs>
-                            <marker id="blue-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                            <marker id="blue-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto">
                                 <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
                             </marker>
                         </defs>
